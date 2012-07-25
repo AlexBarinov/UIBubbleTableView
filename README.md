@@ -1,5 +1,7 @@
 UIBubbleTableView is UITableView based iOS component for rendering chats like it's done in Messages application.
 
+![Screenshow](https://github.com/AlexBarinov/UIBubbleTableView/readme/screenshot.png)
+
 How to install
 -
 
