@@ -20,9 +20,12 @@
     bubbleTable.bubbleDataSource = self;
     
     bubbleData = [[NSMutableArray alloc] initWithObjects:
-                  [[NSBubbleData alloc] initWithText:@"Hi Kate. This is Alex." andDate:[NSDate dateWithTimeIntervalSinceNow:-300] andType:BubbleTypeMine],
-                  [[NSBubbleData alloc] initWithText:@"Hi Alex. How you doing today? Wanna take a long walk? The weather is perfect!" andDate:[NSDate dateWithTimeIntervalSinceNow:-280] andType:BubbleTypeSomeoneElse],
-                  [[NSBubbleData alloc] initWithText:@"Yes, sure. See you at 8." andDate:[NSDate dateWithTimeIntervalSinceNow:0] andType:BubbleTypeMine],
+                  [NSBubbleData dataWithText:@"Marge, there's something that I want to ask you, but I'm afraid, because if you say no, it will destroy me and make me a criminal." andDate:[NSDate dateWithTimeIntervalSinceNow:-300] andType:BubbleTypeMine],
+                  [NSBubbleData dataWithText:@"Well, I haven't said no to you yet, have I?" andDate:[NSDate dateWithTimeIntervalSinceNow:-280] andType:BubbleTypeSomeoneElse],
+                  [NSBubbleData dataWithText:@"Marge... Oh, damn it." andDate:[NSDate dateWithTimeIntervalSinceNow:0] andType:BubbleTypeMine],
+                  [NSBubbleData dataWithText:@"What's wrong?" andDate:[NSDate dateWithTimeIntervalSinceNow:300]  andType:BubbleTypeSomeoneElse],
+                  [NSBubbleData dataWithText:@"Ohn I wrote down what I wanted to say on a card.." andDate:[NSDate dateWithTimeIntervalSinceNow:395]  andType:BubbleTypeMine],
+                  [NSBubbleData dataWithText:@"he stupid thing must have fallen out of my pocket." andDate:[NSDate dateWithTimeIntervalSinceNow:400]  andType:BubbleTypeMine],
                   nil];
 }
 

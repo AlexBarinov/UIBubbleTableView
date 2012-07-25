@@ -21,5 +21,6 @@ typedef enum _NSBubbleType
 @property (nonatomic, strong) NSString *text;
 
 - (id)initWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;
++ (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;
 
 @end

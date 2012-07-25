@@ -28,7 +28,7 @@
     NSBubbleType type = value.data.type;
     
     float x = (type == BubbleTypeSomeoneElse) ? 20 : self.frame.size.width - 20 - value.labelSize.width;
-    float y = 15 + (value.header ? 30 : 0);
+    float y = 5 + (value.header ? 30 : 0);
     
     contentLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
     contentLabel.frame = CGRectMake(x, y, value.labelSize.width, value.labelSize.height);
@@ -36,12 +36,12 @@
     
     if (type == BubbleTypeSomeoneElse)
     {
-        bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeoneGray.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:13];        
-        bubbleImage.frame = CGRectMake(x - 18, y - 5, value.labelSize.width + 26, value.labelSize.height + 13);
+        bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];        
+        bubbleImage.frame = CGRectMake(x - 18, y - 4, value.labelSize.width + 30, value.labelSize.height + 15);
     }
     else {
-        bubbleImage.image = [[UIImage imageNamed:@"bubbleMineGreen.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:13];
-        bubbleImage.frame = CGRectMake(x - 9, y - 5, value.labelSize.width + 26, value.labelSize.height + 13);
+        bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
+        bubbleImage.frame = CGRectMake(x - 9, y - 4, value.labelSize.width + 26, value.labelSize.height + 15);
     }
 }
 

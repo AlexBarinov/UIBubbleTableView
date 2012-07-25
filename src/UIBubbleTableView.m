@@ -106,7 +106,7 @@
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
         
         for (int i = 0; i < count; i++)
         {
@@ -116,7 +116,7 @@
             // Calculating cell height
             dataInternal.labelSize = [dataInternal.data.text sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
             
-            dataInternal.height = dataInternal.labelSize.height + 15;
+            dataInternal.height = dataInternal.labelSize.height + 5 + 11;
             
             dataInternal.header = nil;
             

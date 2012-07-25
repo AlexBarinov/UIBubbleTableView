@@ -20,8 +20,12 @@
 		76ED209115BF263600E186D3 /* NSBubbleDataInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209015BF263600E186D3 /* NSBubbleDataInternal.m */; };
 		76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */; };
 		76ED209615BF2A1400E186D3 /* UIBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76ED209515BF2A1400E186D3 /* UIBubbleTableViewCell.xib */; };
-		76ED209A15BF32AA00E186D3 /* bubbleMineGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 76ED209815BF32AA00E186D3 /* bubbleMineGreen.png */; };
-		76ED209B15BF32AA00E186D3 /* bubbleSomeoneGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 76ED209915BF32AA00E186D3 /* bubbleSomeoneGray.png */; };
+		76ED209A15BF32AA00E186D3 /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = 76ED209815BF32AA00E186D3 /* bubbleMine.png */; };
+		76ED209B15BF32AA00E186D3 /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = 76ED209915BF32AA00E186D3 /* bubbleSomeone.png */; };
+		C86D4FF815BFE7B3003F161E /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86D4FF615BFE7B3003F161E /* bubbleMine@2x.png */; };
+		C86D4FF915BFE7B3003F161E /* bubbleSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86D4FF715BFE7B3003F161E /* bubbleSomeone@2x.png */; };
+		C86D4FFC15BFEBBF003F161E /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = C86D4FFB15BFEBBF003F161E /* icon_57.png */; };
+		C86D4FFE15BFEBC1003F161E /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = C86D4FFD15BFEBC1003F161E /* icon_114.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +52,12 @@
 		76ED209215BF29EE00E186D3 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableViewCell.h; path = ../../src/UIBubbleTableViewCell.h; sourceTree = "<group>"; };
 		76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTableViewCell.m; path = ../../src/UIBubbleTableViewCell.m; sourceTree = "<group>"; };
 		76ED209515BF2A1400E186D3 /* UIBubbleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIBubbleTableViewCell.xib; path = ../../src/UIBubbleTableViewCell.xib; sourceTree = "<group>"; };
-		76ED209815BF32AA00E186D3 /* bubbleMineGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubbleMineGreen.png; path = ../../images/bubbleMineGreen.png; sourceTree = "<group>"; };
-		76ED209915BF32AA00E186D3 /* bubbleSomeoneGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubbleSomeoneGray.png; path = ../../images/bubbleSomeoneGray.png; sourceTree = "<group>"; };
+		76ED209815BF32AA00E186D3 /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubbleMine.png; path = ../../images/bubbleMine.png; sourceTree = "<group>"; };
+		76ED209915BF32AA00E186D3 /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bubbleSomeone.png; path = ../../images/bubbleSomeone.png; sourceTree = "<group>"; };
+		C86D4FF615BFE7B3003F161E /* bubbleMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bubbleMine@2x.png"; path = "../../images/bubbleMine@2x.png"; sourceTree = "<group>"; };
+		C86D4FF715BFE7B3003F161E /* bubbleSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bubbleSomeone@2x.png"; path = "../../images/bubbleSomeone@2x.png"; sourceTree = "<group>"; };
+		C86D4FFB15BFEBBF003F161E /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_57.png; path = ../icon_57.png; sourceTree = "<group>"; };
+		C86D4FFD15BFEBC1003F161E /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_114.png; path = ../icon_114.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,8 @@
 		76ED206915BF096C00E186D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C86D4FFD15BFEBC1003F161E /* icon_114.png */,
+				C86D4FFB15BFEBBF003F161E /* icon_57.png */,
 				76ED206A15BF096C00E186D3 /* UIBubbleTableViewExample-Info.plist */,
 				76ED206B15BF096C00E186D3 /* InfoPlist.strings */,
 				76ED206E15BF096C00E186D3 /* main.m */,
@@ -139,8 +149,10 @@
 		76ED209715BF329800E186D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				76ED209815BF32AA00E186D3 /* bubbleMineGreen.png */,
-				76ED209915BF32AA00E186D3 /* bubbleSomeoneGray.png */,
+				76ED209815BF32AA00E186D3 /* bubbleMine.png */,
+				C86D4FF615BFE7B3003F161E /* bubbleMine@2x.png */,
+				76ED209915BF32AA00E186D3 /* bubbleSomeone.png */,
+				C86D4FF715BFE7B3003F161E /* bubbleSomeone@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -198,8 +210,12 @@
 				76ED206D15BF096C00E186D3 /* InfoPlist.strings in Resources */,
 				76ED207915BF096C00E186D3 /* ViewController.xib in Resources */,
 				76ED209615BF2A1400E186D3 /* UIBubbleTableViewCell.xib in Resources */,
-				76ED209A15BF32AA00E186D3 /* bubbleMineGreen.png in Resources */,
-				76ED209B15BF32AA00E186D3 /* bubbleSomeoneGray.png in Resources */,
+				76ED209A15BF32AA00E186D3 /* bubbleMine.png in Resources */,
+				76ED209B15BF32AA00E186D3 /* bubbleSomeone.png in Resources */,
+				C86D4FF815BFE7B3003F161E /* bubbleMine@2x.png in Resources */,
+				C86D4FF915BFE7B3003F161E /* bubbleSomeone@2x.png in Resources */,
+				C86D4FFC15BFEBBF003F161E /* icon_57.png in Resources */,
+				C86D4FFE15BFEBC1003F161E /* icon_114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

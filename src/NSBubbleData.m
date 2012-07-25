@@ -14,6 +14,11 @@
 @synthesize type;
 @synthesize text;
 
++ (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type
+{
+    return [[[NSBubbleData alloc] initWithText:text andDate:date andType:type] autorelease];
+}
+
 - (id)initWithText:(NSString *)initText andDate:(NSDate *)initDate andType:(NSBubbleType)initType
 {
     self = [super init];
