@@ -150,13 +150,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *key = [[bubbleDictionary allKeys] objectAtIndex:section];
+    NSString *key = [[[bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:section];
     return [[bubbleDictionary valueForKey:key] count];
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *key = [[bubbleDictionary allKeys] objectAtIndex:indexPath.section];
+    NSString *key = [[[bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
     NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[bubbleDictionary valueForKey:key] objectAtIndex:indexPath.row]);
 
     return dataInternal.height;
@@ -166,7 +166,7 @@
 {
     static NSString *cellId = @"tblBubbleCell";
     
-    NSString *key = [[bubbleDictionary allKeys] objectAtIndex:indexPath.section];
+    NSString *key = [[[bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
     NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[bubbleDictionary valueForKey:key] objectAtIndex:indexPath.row]);
     
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
