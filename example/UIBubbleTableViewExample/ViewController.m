@@ -5,6 +5,11 @@
 //  StexGroup, LLC
 //  http://www.stexgroup.com
 //
+//  Project home page: http://alexbarinov.github.com/UIBubbleTableView/
+//
+//  This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
+//  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/
+//
 
 #import "ViewController.h"
 #import "UIBubbleTableView.h"
@@ -25,7 +30,7 @@
                   [NSBubbleData dataWithText:@"Marge... Oh, damn it." andDate:[NSDate dateWithTimeIntervalSinceNow:0] andType:BubbleTypeMine],
                   [NSBubbleData dataWithText:@"What's wrong?" andDate:[NSDate dateWithTimeIntervalSinceNow:300]  andType:BubbleTypeSomeoneElse],
                   [NSBubbleData dataWithText:@"Ohn I wrote down what I wanted to say on a card.." andDate:[NSDate dateWithTimeIntervalSinceNow:395]  andType:BubbleTypeMine],
-                  [NSBubbleData dataWithText:@"he stupid thing must have fallen out of my pocket." andDate:[NSDate dateWithTimeIntervalSinceNow:400]  andType:BubbleTypeMine],
+                  [NSBubbleData dataWithText:@"The stupid thing must have fallen out of my pocket." andDate:[NSDate dateWithTimeIntervalSinceNow:400]  andType:BubbleTypeMine],
                   nil];
 }
 
