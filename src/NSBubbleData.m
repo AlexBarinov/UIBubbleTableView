@@ -29,9 +29,11 @@
     self = [super init];
     if (self)
     {
-        self.text = initText;
-        self.date = initDate;
-        self.type = initType;        
+        text = initText;
+        if (!text || [text isEqualToString:@""]) text = @" ";
+        
+        date = initDate;
+        type = initType;        
     }
     return self;
 }

@@ -21,9 +21,9 @@ typedef enum _NSBubbleType
 
 @interface NSBubbleData : NSObject
 
-@property (nonatomic, strong) NSDate *date;
-@property (nonatomic) NSBubbleType type;
-@property (nonatomic, strong) NSString *text;
+@property (readonly, nonatomic, strong) NSDate *date;
+@property (readonly, nonatomic) NSBubbleType type;
+@property (readonly, nonatomic, strong) NSString *text;
 
 - (id)initWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;

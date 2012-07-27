@@ -76,7 +76,13 @@
         for (NSString *key in [bubbleDictionary allKeys])
         {
             NSMutableArray *array = [bubbleDictionary valueForKey:key];
-            for (NSObject *object in array) [object release];
+            for (NSObject *object in array)
+            {
+                NSBubbleDataInternal *dataInternal = (NSBubbleDataInternal *)object;
+                
+                [dataInternal.data release];
+                [dataInternal release];
+            }
             [array release];
         }
         [bubbleDictionary release];
@@ -119,7 +125,7 @@
             dataInternal.data = (NSBubbleData *)[bubbleData objectAtIndex:i];
             
             // Calculating cell height
-            dataInternal.labelSize = [dataInternal.data.text sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+            dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
             
             dataInternal.height = dataInternal.labelSize.height + 5 + 11;
             
