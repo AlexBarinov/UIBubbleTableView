@@ -19,12 +19,20 @@
 
 @synthesize dataInternal;
 
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    [self setDataInternal:dataInternal];
+}
+
 - (void)setDataInternal:(NSBubbleDataInternal *)value
 {
+    dataInternal = value;
+    
     if (value.header)
     {
         headerLabel.hidden = NO;
-        headerLabel.text = value.header;        
+        headerLabel.text = value.header;
     }
     else
     {
