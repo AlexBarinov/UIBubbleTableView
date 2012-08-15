@@ -15,49 +15,58 @@
 #import "UIBubbleTableViewCell.h"
 #import "NSBubbleData.h"
 
+@interface UIBubbleTableViewCell ()
+- (void) setupInternalData;
+@end
+
 @implementation UIBubbleTableViewCell
 
-@synthesize dataInternal;
+@synthesize dataInternal = _dataInternal;
 
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    [self setDataInternal:dataInternal];
+	[self setupInternalData];
 }
 
 - (void)setDataInternal:(NSBubbleDataInternal *)value
 {
-    dataInternal = value;
-    
-    if (value.header)
+	[value retain];
+	[_dataInternal release];
+	_dataInternal = value;
+	[self setupInternalData];
+}
+
+- (void) setupInternalData
+{
+    if (self.dataInternal.header)
     {
         headerLabel.hidden = NO;
-        headerLabel.text = value.header;
+        headerLabel.text = self.dataInternal.header;
     }
     else
     {
         headerLabel.hidden = YES;
     }
     
-    NSBubbleType type = value.data.type;
+    NSBubbleType type = self.dataInternal.data.type;
     
-    float x = (type == BubbleTypeSomeoneElse) ? 20 : self.frame.size.width - 20 - value.labelSize.width;
-    float y = 5 + (value.header ? 30 : 0);
+    float x = (type == BubbleTypeSomeoneElse) ? 20 : self.frame.size.width - 20 - self.dataInternal.labelSize.width;
+    float y = 5 + (self.dataInternal.header ? 30 : 0);
     
     contentLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    contentLabel.frame = CGRectMake(x, y, value.labelSize.width, value.labelSize.height);
-    contentLabel.text = value.data.text;
+    contentLabel.frame = CGRectMake(x, y, self.dataInternal.labelSize.width, self.dataInternal.labelSize.height);
+    contentLabel.text = self.dataInternal.data.text;
     
     if (type == BubbleTypeSomeoneElse)
     {
-        bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];        
-        bubbleImage.frame = CGRectMake(x - 18, y - 4, value.labelSize.width + 30, value.labelSize.height + 15);
+        bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
+        bubbleImage.frame = CGRectMake(x - 18, y - 4, self.dataInternal.labelSize.width + 30, self.dataInternal.labelSize.height + 15);
     }
     else {
         bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
-        bubbleImage.frame = CGRectMake(x - 9, y - 4, value.labelSize.width + 26, value.labelSize.height + 15);
+        bubbleImage.frame = CGRectMake(x - 9, y - 4, self.dataInternal.labelSize.width + 26, self.dataInternal.labelSize.height + 15);
     }
 }
-
 
 @end

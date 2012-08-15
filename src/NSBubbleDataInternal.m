@@ -15,9 +15,18 @@
 
 @implementation NSBubbleDataInternal
 
-@synthesize data;
-@synthesize header;
-@synthesize height;
-@synthesize labelSize;
+@synthesize data = _data;
+@synthesize header = _header;
+@synthesize height = _height;
+@synthesize labelSize = _labelSize;
+
+- (void)dealloc
+{
+	[_data release];
+	_data = nil;
+	[_header release];
+	_header = nil;
+    [super dealloc];
+}
 
 @end

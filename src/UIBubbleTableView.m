@@ -15,10 +15,16 @@
 #import "NSBubbleData.h"
 #import "NSBubbleDataInternal.h"
 
+@interface UIBubbleTableView ()
+@property (nonatomic, retain) NSMutableDictionary *bubbleDictionary;
+
+@end
+
 @implementation UIBubbleTableView
 
-@synthesize bubbleDataSource;
-@synthesize snapInterval;
+@synthesize bubbleDataSource = _bubbleDataSource;
+@synthesize snapInterval = _snapInterval;
+@synthesize bubbleDictionary = _bubbleDictionary;
 
 #pragma mark - Initializators
 
@@ -66,41 +72,34 @@
     return self;
 }
 
+
+- (void)dealloc
+{
+    [_bubbleDictionary release];
+	_bubbleDictionary = nil;
+	_bubbleDataSource = nil;
+    [super dealloc];
+}
+
 #pragma mark - Override
 
 - (void)reloadData
 {
     // Cleaning up
-    if (bubbleDictionary)
-    {
-        for (NSString *key in [bubbleDictionary allKeys])
-        {
-            NSMutableArray *array = [bubbleDictionary valueForKey:key];
-            for (NSObject *object in array)
-            {
-                NSBubbleDataInternal *dataInternal = (NSBubbleDataInternal *)object;
-                
-                [dataInternal.data release];
-                [dataInternal release];
-            }
-            [array release];
-        }
-        [bubbleDictionary release];
-        bubbleDictionary = nil;
-    }
+	self.bubbleDictionary = nil;
     
     // Loading new data
     int count = 0;
     if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
     {        
-        bubbleDictionary = [[NSMutableDictionary alloc] init];
-        NSMutableArray *bubbleData = [[NSMutableArray alloc] initWithCapacity:count];
+        self.bubbleDictionary = [[[NSMutableDictionary alloc] init] autorelease];
+        NSMutableArray *bubbleData = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
         
         for (int i = 0; i < count; i++)
         {
             NSObject *object = [self.bubbleDataSource bubbleTableView:self dataForRow:i];
             assert([object isKindOfClass:[NSBubbleData class]]);
-            [bubbleData addObject:[object retain]];
+            [bubbleData addObject:object];
         }
         
         [bubbleData sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
@@ -121,7 +120,7 @@
         
         for (int i = 0; i < count; i++)
         {
-            NSBubbleDataInternal *dataInternal = [[NSBubbleDataInternal alloc] init];
+            NSBubbleDataInternal *dataInternal = [[[NSBubbleDataInternal alloc] init] autorelease];
             dataInternal.data = (NSBubbleData *)[bubbleData objectAtIndex:i];
             
             // Calculating cell height
@@ -131,10 +130,10 @@
             
             dataInternal.header = nil;
             
-            if ([dataInternal.data.date timeIntervalSinceDate:last] > snapInterval)
+            if ([dataInternal.data.date timeIntervalSinceDate:last] > self.snapInterval)
             {
-                currentSection = [[NSMutableArray alloc] init];
-                [bubbleDictionary setValue:currentSection forKey:[NSString stringWithFormat:@"%d",i]];
+                currentSection = [[[NSMutableArray alloc] init] autorelease];
+                [self.bubbleDictionary setObject:currentSection forKey:[NSString stringWithFormat:@"%d",i]];
                 dataInternal.header = [dateFormatter stringFromDate:dataInternal.data.date];
                 dataInternal.height += 30;
             }
@@ -155,20 +154,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (!bubbleDictionary) return 0;
-    return [[bubbleDictionary allKeys] count];
+    if (!self.bubbleDictionary) return 0;
+    return [[self.bubbleDictionary allKeys] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *key = [[[bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:section];
-    return [[bubbleDictionary valueForKey:key] count];
+    NSString *key = [[[self.bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:section];
+    return [[self.bubbleDictionary objectForKey:key] count];
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *key = [[[bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
-    NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[bubbleDictionary valueForKey:key] objectAtIndex:indexPath.row]);
+    NSString *key = [[[self.bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
+    NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[self.bubbleDictionary objectForKey:key] objectAtIndex:indexPath.row]);
 
     return dataInternal.height;
 }
@@ -177,8 +176,8 @@
 {
     static NSString *cellId = @"tblBubbleCell";
     
-    NSString *key = [[[bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
-    NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[bubbleDictionary valueForKey:key] objectAtIndex:indexPath.row]);
+    NSString *key = [[[self.bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
+    NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[self.bubbleDictionary objectForKey:key] objectAtIndex:indexPath.row]);
     
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     

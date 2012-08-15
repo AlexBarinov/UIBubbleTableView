@@ -15,9 +15,9 @@
 
 @implementation NSBubbleData
 
-@synthesize date;
-@synthesize type;
-@synthesize text;
+@synthesize date = _date;
+@synthesize type = _type;
+@synthesize text = _text;
 
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type
 {
@@ -29,13 +29,22 @@
     self = [super init];
     if (self)
     {
-        text = initText;
-        if (!text || [text isEqualToString:@""]) text = @" ";
+        _text = [initText retain];
+        if (!_text || [_text isEqualToString:@""]) _text = @" ";
         
-        date = initDate;
-        type = initType;        
+        _date = [initDate retain];
+        _type = initType;
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [_date release];
+	_date = nil;
+	[_text release];
+	_text = nil;
+    [super dealloc];
 }
 
 @end
