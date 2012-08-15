@@ -160,13 +160,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *key = [[[self.bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:section];
+	NSArray *keys = [self.bubbleDictionary allKeys];
+	NSArray *sortedArray = [keys sortedArrayUsingComparator:^(id firstObject, id secondObject) {
+		return [((NSString *)firstObject) compare:((NSString *)secondObject) options:NSNumericSearch];
+	}];
+    NSString *key = [sortedArray objectAtIndex:section];
     return [[self.bubbleDictionary objectForKey:key] count];
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *key = [[[self.bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
+	NSArray *keys = [self.bubbleDictionary allKeys];
+	NSArray *sortedArray = [keys sortedArrayUsingComparator:^(id firstObject, id secondObject) {
+		return [((NSString *)firstObject) compare:((NSString *)secondObject) options:NSNumericSearch];
+	}];
+    NSString *key = [sortedArray objectAtIndex:indexPath.section];
     NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[self.bubbleDictionary objectForKey:key] objectAtIndex:indexPath.row]);
 
     return dataInternal.height;
@@ -176,7 +184,11 @@
 {
     static NSString *cellId = @"tblBubbleCell";
     
-    NSString *key = [[[self.bubbleDictionary allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:indexPath.section];
+	NSArray *keys = [self.bubbleDictionary allKeys];
+	NSArray *sortedArray = [keys sortedArrayUsingComparator:^(id firstObject, id secondObject) {
+		return [((NSString *)firstObject) compare:((NSString *)secondObject) options:NSNumericSearch];
+	}];
+    NSString *key = [sortedArray objectAtIndex:indexPath.section];
     NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[self.bubbleDictionary objectForKey:key] objectAtIndex:indexPath.row]);
     
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
