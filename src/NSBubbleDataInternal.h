@@ -15,9 +15,16 @@
 
 @class NSBubbleData;
 
+typedef enum _NSBubbleDataType
+{
+    NSBubbleDataTypeNormalBubble = 0,
+    NSBubbleDataTypeTypingBubble = 1
+} NSBubbleDataType;
+
 @interface NSBubbleDataInternal : NSObject
 
 @property (nonatomic, strong) NSBubbleData* data;
+@property (nonatomic) NSBubbleDataType type;
 @property (nonatomic) float height;
 @property (nonatomic) CGSize labelSize;
 @property (nonatomic, strong) NSString *header;

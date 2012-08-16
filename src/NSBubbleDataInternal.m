@@ -12,10 +12,12 @@
 //
 
 #import "NSBubbleDataInternal.h"
+#import "NSBubbleData.h"
 
 @implementation NSBubbleDataInternal
 
 @synthesize data = _data;
+@synthesize type = _type;
 @synthesize header = _header;
 @synthesize height = _height;
 @synthesize labelSize = _labelSize;

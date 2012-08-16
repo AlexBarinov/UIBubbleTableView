@@ -22,8 +22,6 @@
 {
     [super viewDidLoad];
 
-    bubbleTable.bubbleDataSource = self;
-    
     bubbleData = [[NSMutableArray alloc] initWithObjects:
                   [NSBubbleData dataWithText:@"Marge, there's something that I want to ask you, but I'm afraid, because if you say no, it will destroy me and make me a criminal." andDate:[NSDate dateWithTimeIntervalSinceNow:-300] andType:BubbleTypeMine],
                   [NSBubbleData dataWithText:@"Well, I haven't said no to you yet, have I?" andDate:[NSDate dateWithTimeIntervalSinceNow:-280] andType:BubbleTypeSomeoneElse],
@@ -32,6 +30,13 @@
                   [NSBubbleData dataWithText:@"Ohn I wrote down what I wanted to say on a card.." andDate:[NSDate dateWithTimeIntervalSinceNow:395]  andType:BubbleTypeMine],
                   [NSBubbleData dataWithText:@"The stupid thing must have fallen out of my pocket." andDate:[NSDate dateWithTimeIntervalSinceNow:400]  andType:BubbleTypeMine],
                   nil];
+    
+    bubbleTable.bubbleDataSource = self;
+    
+    bubbleTable.snapInterval = 130;
+    bubbleTable.typingBubble = NSBubbleTypingTypeSomebody;
+
+    [bubbleTable reloadData];
 }
 
 - (void)viewDidUnload

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760D927D15DD824900E06D4A /* typingMine.png in Resources */ = {isa = PBXBuildFile; fileRef = 760D927915DD824900E06D4A /* typingMine.png */; };
+		760D927E15DD824900E06D4A /* typingMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760D927A15DD824900E06D4A /* typingMine@2x.png */; };
+		760D927F15DD824900E06D4A /* typingSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = 760D927B15DD824900E06D4A /* typingSomeone.png */; };
+		760D928015DD824900E06D4A /* typingSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 760D927C15DD824900E06D4A /* typingSomeone@2x.png */; };
 		76ED206315BF096C00E186D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206215BF096C00E186D3 /* UIKit.framework */; };
 		76ED206515BF096C00E186D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206415BF096C00E186D3 /* Foundation.framework */; };
 		76ED206715BF096C00E186D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206615BF096C00E186D3 /* CoreGraphics.framework */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		760D927915DD824900E06D4A /* typingMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = typingMine.png; path = ../../images/typingMine.png; sourceTree = "<group>"; };
+		760D927A15DD824900E06D4A /* typingMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "typingMine@2x.png"; path = "../../images/typingMine@2x.png"; sourceTree = "<group>"; };
+		760D927B15DD824900E06D4A /* typingSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = typingSomeone.png; path = ../../images/typingSomeone.png; sourceTree = "<group>"; };
+		760D927C15DD824900E06D4A /* typingSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "typingSomeone@2x.png"; path = "../../images/typingSomeone@2x.png"; sourceTree = "<group>"; };
 		76ED205E15BF096C00E186D3 /* UIBubbleTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIBubbleTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED206215BF096C00E186D3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED206415BF096C00E186D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -153,6 +161,10 @@
 				C86D4FF615BFE7B3003F161E /* bubbleMine@2x.png */,
 				76ED209915BF32AA00E186D3 /* bubbleSomeone.png */,
 				C86D4FF715BFE7B3003F161E /* bubbleSomeone@2x.png */,
+				760D927915DD824900E06D4A /* typingMine.png */,
+				760D927A15DD824900E06D4A /* typingMine@2x.png */,
+				760D927B15DD824900E06D4A /* typingSomeone.png */,
+				760D927C15DD824900E06D4A /* typingSomeone@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -216,6 +228,10 @@
 				C86D4FF915BFE7B3003F161E /* bubbleSomeone@2x.png in Resources */,
 				C86D4FFC15BFEBBF003F161E /* icon_57.png in Resources */,
 				C86D4FFE15BFEBC1003F161E /* icon_114.png in Resources */,
+				760D927D15DD824900E06D4A /* typingMine.png in Resources */,
+				760D927E15DD824900E06D4A /* typingMine@2x.png in Resources */,
+				760D927F15DD824900E06D4A /* typingSomeone.png in Resources */,
+				760D928015DD824900E06D4A /* typingSomeone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
