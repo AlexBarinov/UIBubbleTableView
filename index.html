@@ -63,11 +63,16 @@
 <li>Message date (<code>NSDate *date</code>)</li>
 </ul><p>It's good idea to use <code>+ (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type</code> to create bubble data.</p>
 
-<h2>Messages grouping</h2>
+<h2>Features</h2>
+
+<h3>Messages grouping</h3>
 
 <p>The messages received within specified time interval will be grouped into one chat conversation. Each chat conversation is prerendered with date label. You can change this time interval by setting <code>NSTimeInterval snapInterval</code> property  of <code>UIBubbleTableView</code></p>
 
-<h2>Other colors for bubbles</h2>
+<h3>Now typing bubble</h3>
+    <p>You can set the "now typing" bubble (small gray bubble with 3 dots inside) with <code>NSBubbleTypingType typingBubble</code> property. It can be displayed like you are typing (<code>NSBubbleTypingTypeMe</code>), or somebody's typing (<code>NSBubbleTypingTypeMe</code>). Or you can hide it with <code>NSBubbleTypingTypeNone</code>. Table data reload is now required for the bubble to show or to hide.</p>
+    
+<h3>Other colors for bubbles</h3>
 
 <p>You are welcome to create bubbles of any color you want. To archive this open the PSD files downloaded with the project in <code>psd</code> folder (you'll need Adobe Photoshop), in the Shape layer change the Gradient overlay effect the way you want and save the file in PNG in the <code>images</code> folder.</p>
 <!--
@@ -78,9 +83,25 @@
 </ul>
 --> 
 
-<h2>Feedback</h2>
+<h2>Planned features</h2>
+<ul>
+    <li>User avatars</li>
+    <li>URL, phone number recognition</li>
+    <li>Custom header for the table so that developer can add own buttons, labels, etc.</li>
+    <li>Auto scroll (?)</li>
+</ul>
+    
+<h2>Feedback and Acknowledgement</h2>
 
-<p>More features are coming soon. You are always welcome to ask questions, leave comments and report bugs with <a href="https://github.com/AlexBarinov/UIBubbleTableView/issues">https://github.com/AlexBarinov/UIBubbleTableView/issues</a></p>
+<p>More features are coming soon. You are always welcome to ask questions, leave comments and report bugs with <a href="https://github.com/AlexBarinov/UIBubbleTableView/issues">https://github.com/AlexBarinov/UIBubbleTableView/issues</a> or contact me directly at <a href="mailto:github@alex.barinov.name">github@alex.barinov.name</a></p>
+    
+<p>Special thanks to:</p>
+
+<ul>
+    <li>Anna Komleva &ndash; for drawing UI</li>
+    <li>Scott Gruby &ndash; for fixes in memory management</li>
+</ul>
+    
         </section>
 
         <footer>
