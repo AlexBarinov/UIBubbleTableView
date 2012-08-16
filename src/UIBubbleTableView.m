@@ -203,4 +203,18 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.bubbleDataSource respondsToSelector:@selector(tableView:canEditRowAtIndexPath:)]) {
+        return [self.bubbleDataSource tableView:tableView canEditRowAtIndexPath:indexPath];
+    }
+    
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.bubbleDataSource respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)]) {
+        [self.bubbleDataSource tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
+    }
+}
+
 @end
