@@ -124,7 +124,7 @@
             dataInternal.data = (NSBubbleData *)[bubbleData objectAtIndex:i];
             
             // Calculating cell height
-            dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+            dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(self.frame.size.width - kInsetMargin, 9999) lineBreakMode:UILineBreakModeWordWrap];
             
             dataInternal.height = dataInternal.labelSize.height + 5 + 11;
             
@@ -181,9 +181,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellId = @"tblBubbleCell";
-    
+{    
 	NSArray *keys = [self.bubbleDictionary allKeys];
 	NSArray *sortedArray = [keys sortedArrayUsingComparator:^(id firstObject, id secondObject) {
 		return [((NSString *)firstObject) compare:((NSString *)secondObject) options:NSNumericSearch];
@@ -191,12 +189,14 @@
     NSString *key = [sortedArray objectAtIndex:indexPath.section];
     NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[self.bubbleDictionary objectForKey:key] objectAtIndex:indexPath.row]);
     
+    NSString *cellId = @"bubbleCell";
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
     if (cell == nil)
     {
-        [[NSBundle mainBundle] loadNibNamed:@"UIBubbleTableViewCell" owner:self options:nil];
-        cell = bubbleCell;
+        cell = [[[UIBubbleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                             reuseIdentifier:cellId] autorelease];
+        [cell setWidth:tableView.frame.size.width];
     }
     
     cell.dataInternal = dataInternal;

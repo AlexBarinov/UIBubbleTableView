@@ -16,9 +16,12 @@
 #import "UIBubbleTableViewDataSource.h"
 #import "UIBubbleTableViewCell.h"
 
+
+#define kInsetMargin 75
+
 @interface UIBubbleTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 {
-    IBOutlet UIBubbleTableViewCell *bubbleCell;
+
 }
 
 @property (nonatomic, assign) id<UIBubbleTableViewDataSource> bubbleDataSource;

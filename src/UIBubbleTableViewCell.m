@@ -23,6 +23,35 @@
 
 @synthesize dataInternal = _dataInternal;
 
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+        UINib *aXib = [UINib nibWithNibName:@"UIBubbleTableViewCell" bundle:[NSBundle mainBundle]];
+        UIView *aView = [[aXib instantiateWithOwner:self options:nil] lastObject];
+        aView.frame = self.frame;
+        [self addSubview:aView];        
+    }
+
+    return self;
+}
+
+-(void) setWidth:(NSInteger)aWidth
+{
+    [self setFrame:CGRectMake(self.frame.origin.x,
+                              self.frame.origin.y,
+                              aWidth,
+                              self.frame.size.height)];
+}
+
+-(void) awakeFromNib
+{
+    [super awakeFromNib];
+    //Customize IBOutlets here
+}
+
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];

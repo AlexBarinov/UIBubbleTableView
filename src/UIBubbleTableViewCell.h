@@ -22,6 +22,8 @@
     IBOutlet UIImageView *bubbleImage;
 }
 
+-(void) setWidth:(NSInteger)aWidth;
+
 @property (nonatomic, strong) NSBubbleDataInternal *dataInternal;
 
 @end
