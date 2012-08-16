@@ -231,6 +231,7 @@
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] init];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             UIImage *bubbleImage = nil;
             float x = 0;
