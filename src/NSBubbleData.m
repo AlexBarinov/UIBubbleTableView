@@ -18,6 +18,7 @@
 @synthesize date = _date;
 @synthesize type = _type;
 @synthesize text = _text;
+@synthesize avatar;
 
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type
 {
@@ -44,6 +45,7 @@
 	_date = nil;
 	[_text release];
 	_text = nil;
+    self.avatar = nil;
     [super dealloc];
 }
 

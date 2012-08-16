@@ -23,7 +23,9 @@
 }
 
 -(void) setWidth:(NSInteger)aWidth;
+-(void) setCustomBubbleFont:(UIFont *)aFont;
 
 @property (nonatomic, strong) NSBubbleDataInternal *dataInternal;
+@property (retain, nonatomic) IBOutlet UIImageView *avatarImage;
 
 @end

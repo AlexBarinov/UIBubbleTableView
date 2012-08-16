@@ -25,6 +25,7 @@
 @synthesize bubbleDataSource = _bubbleDataSource;
 @synthesize snapInterval = _snapInterval;
 @synthesize bubbleDictionary = _bubbleDictionary;
+@synthesize bubbleFont;
 
 #pragma mark - Initializators
 
@@ -42,6 +43,7 @@
     // UIBubbleTableView default properties
     
     self.snapInterval = 120;
+    self.bubbleFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
 }
 
 - (id)init
@@ -78,7 +80,13 @@
     [_bubbleDictionary release];
 	_bubbleDictionary = nil;
 	_bubbleDataSource = nil;
+    self.bubbleFont = nil;
     [super dealloc];
+}
+
+-(void)setCustomBubbleFont:(UIFont *)aFont;
+{
+    self.bubbleFont = aFont;
 }
 
 #pragma mark - Override
@@ -124,7 +132,7 @@
             dataInternal.data = (NSBubbleData *)[bubbleData objectAtIndex:i];
             
             // Calculating cell height
-            dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(self.frame.size.width - kInsetMargin, 9999) lineBreakMode:UILineBreakModeWordWrap];
+            dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:bubbleFont constrainedToSize:CGSizeMake(self.frame.size.width - kInsetMargin, 9999) lineBreakMode:UILineBreakModeWordWrap];
             
             dataInternal.height = dataInternal.labelSize.height + 5 + 11;
             
@@ -196,7 +204,10 @@
     {
         cell = [[[UIBubbleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                              reuseIdentifier:cellId] autorelease];
+        
+        //Customize at will
         [cell setWidth:tableView.frame.size.width];
+        [cell setCustomBubbleFont:bubbleFont];
     }
     
     cell.dataInternal = dataInternal;

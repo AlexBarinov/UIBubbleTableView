@@ -26,5 +26,8 @@
 
 @property (nonatomic, assign) id<UIBubbleTableViewDataSource> bubbleDataSource;
 @property (nonatomic) NSTimeInterval snapInterval;
+@property (nonatomic,retain) UIFont *bubbleFont;
+
+-(void)setCustomBubbleFont:(UIFont *)aFont;
 
 @end

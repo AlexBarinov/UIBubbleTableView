@@ -24,6 +24,7 @@ typedef enum _NSBubbleType
 @property (readonly, nonatomic, strong) NSDate *date;
 @property (readonly, nonatomic) NSBubbleType type;
 @property (readonly, nonatomic, strong) NSString *text;
+@property (nonatomic, retain) UIImage *avatar;
 
 - (id)initWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;

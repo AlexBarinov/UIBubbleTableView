@@ -22,7 +22,7 @@
 @implementation UIBubbleTableViewCell
 
 @synthesize dataInternal = _dataInternal;
-
+@synthesize avatarImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -32,7 +32,7 @@
         UINib *aXib = [UINib nibWithNibName:@"UIBubbleTableViewCell" bundle:[NSBundle mainBundle]];
         UIView *aView = [[aXib instantiateWithOwner:self options:nil] lastObject];
         aView.frame = self.frame;
-        [self addSubview:aView];        
+        [self addSubview:aView];
     }
 
     return self;
@@ -46,10 +46,22 @@
                               self.frame.size.height)];
 }
 
+-(void) setCustomBubbleFont:(UIFont *)aFont;
+{
+    contentLabel.font = aFont;
+    headerLabel.font = aFont;
+}
+
 -(void) awakeFromNib
 {
     [super awakeFromNib];
     //Customize IBOutlets here
+    
+    //Default values
+    UIFont *defaultFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+
+    contentLabel.font = defaultFont;
+    headerLabel.font = defaultFont;
 }
 
 - (void)setFrame:(CGRect)frame
@@ -62,6 +74,7 @@
 {
     [_dataInternal release];
 	_dataInternal = nil;
+    [avatarImage release];
     [super dealloc];
 }
 
@@ -85,13 +98,20 @@
     {
         headerLabel.hidden = YES;
     }
-    
+        
     NSBubbleType type = self.dataInternal.data.type;
     
     float x = (type == BubbleTypeSomeoneElse) ? 20 : self.frame.size.width - 20 - self.dataInternal.labelSize.width;
     float y = 5 + (self.dataInternal.header ? 30 : 0);
     
-    contentLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    
+    if (self.dataInternal.data.avatar && type == BubbleTypeSomeoneElse) {
+        [avatarImage setImage:self.dataInternal.data.avatar];
+        x += avatarImage.frame.size.width + 5;
+    } else {
+        [avatarImage setImage:nil];
+    }
+
     contentLabel.frame = CGRectMake(x, y, self.dataInternal.labelSize.width, self.dataInternal.labelSize.height);
     contentLabel.text = self.dataInternal.data.text;
     

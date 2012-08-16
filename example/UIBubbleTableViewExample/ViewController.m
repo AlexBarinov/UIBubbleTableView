@@ -24,6 +24,12 @@
 
     bubbleTable.bubbleDataSource = self;
     
+    [bubbleTable setCustomBubbleFont:[UIFont systemFontOfSize:16]];
+    
+    NSBubbleData *bubbleWithAvatar = [NSBubbleData dataWithText:@"And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know I am the Lord when I lay my vengeance upon you." andDate:[NSDate dateWithTimeIntervalSinceNow:-1000] andType:BubbleTypeSomeoneElse];
+    bubbleWithAvatar.avatar = [UIImage imageNamed:@"icon_57"];
+    
+    
     bubbleData = [[NSMutableArray alloc] initWithObjects:
                   [NSBubbleData dataWithText:@"Marge, there's something that I want to ask you, but I'm afraid, because if you say no, it will destroy me and make me a criminal." andDate:[NSDate dateWithTimeIntervalSinceNow:-300] andType:BubbleTypeMine],
                   [NSBubbleData dataWithText:@"Well, I haven't said no to you yet, have I?" andDate:[NSDate dateWithTimeIntervalSinceNow:-280] andType:BubbleTypeSomeoneElse],
@@ -31,6 +37,7 @@
                   [NSBubbleData dataWithText:@"What's wrong?" andDate:[NSDate dateWithTimeIntervalSinceNow:300]  andType:BubbleTypeSomeoneElse],
                   [NSBubbleData dataWithText:@"Ohn I wrote down what I wanted to say on a card.." andDate:[NSDate dateWithTimeIntervalSinceNow:395]  andType:BubbleTypeMine],
                   [NSBubbleData dataWithText:@"The stupid thing must have fallen out of my pocket." andDate:[NSDate dateWithTimeIntervalSinceNow:400]  andType:BubbleTypeMine],
+                  bubbleWithAvatar,
                   nil];
 }
 
