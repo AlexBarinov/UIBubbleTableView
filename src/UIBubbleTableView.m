@@ -159,7 +159,7 @@
         dataInternal.data = nil;
         dataInternal.type = NSBubbleDataTypeTypingBubble;
         dataInternal.labelSize = CGSizeMake(0, 0);
-        dataInternal.height = 30;
+        dataInternal.height = 40;
         
         [self.bubbleDictionary setObject:[NSMutableArray arrayWithObject:dataInternal] forKey:[NSString stringWithFormat:@"%d", count]];
     }
@@ -239,17 +239,17 @@
             if (self.typingBubble == NSBubbleTypingTypeMe)
             {
                 bubbleImage = [UIImage imageNamed:@"typingMine.png"]; 
-                x = cell.frame.size.width - 8 - bubbleImage.size.width;
+                x = cell.frame.size.width - 4 - bubbleImage.size.width;
             }
             else
             {
                 bubbleImage = [UIImage imageNamed:@"typingSomeone.png"]; 
-                x = 8;
+                x = 4;
             }
 
             
             UIImageView *bubbleImageView = [[UIImageView alloc] initWithImage:bubbleImage];
-            bubbleImageView.frame = CGRectMake(x, 4, 48, 22);
+            bubbleImageView.frame = CGRectMake(x, 4, 73, 31);
             [cell addSubview:[bubbleImageView autorelease]];
         }
         
