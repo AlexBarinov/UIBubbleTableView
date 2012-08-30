@@ -18,6 +18,7 @@
 @synthesize date = _date;
 @synthesize type = _type;
 @synthesize text = _text;
+@synthesize view = _view;
 
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type
 {
@@ -38,12 +39,30 @@
     return self;
 }
 
++ (id)dataWithView:(UIView *)view andDate:(NSDate *)date andType:(NSBubbleType)type
+{
+    return [[[NSBubbleData alloc] initWithView:view andDate:date andType:type] autorelease];
+}
+
+- (id)initWithView:(UIView *)view andDate:(NSDate *)date andType:(NSBubbleType)type
+{
+    self = [super init];
+    if (self) {
+        _view = [view retain];
+        _date = [date retain];
+        _type = type;
+    }
+    return self;
+}
+
 - (void)dealloc
 {
     [_date release];
 	_date = nil;
 	[_text release];
 	_text = nil;
+    [_view release];
+    _view = nil;
     [super dealloc];
 }
 

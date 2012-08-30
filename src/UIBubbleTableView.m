@@ -129,9 +129,16 @@
             dataInternal.type = NSBubbleDataTypeNormalBubble;
             
             // Calculating cell height
-            dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+            CGFloat dataHeight = 0.0;
+            if (dataInternal.data.text)
+            {
+                dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+                dataHeight = dataInternal.labelSize.height;
+            }
+            else
+                dataHeight = CGRectGetHeight(dataInternal.data.view.frame)+12.0 /*cf offsetY in cell. this not really cool implementation all these values*/;
             
-            dataInternal.height = dataInternal.labelSize.height + 5 + 11;
+            dataInternal.height = dataHeight + 5 + 11;
             
             dataInternal.header = nil;
             
