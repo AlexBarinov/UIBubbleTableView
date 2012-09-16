@@ -22,13 +22,15 @@
 @synthesize height = _height;
 @synthesize labelSize = _labelSize;
 
+#ifndef ARC_ENABLED
 - (void)dealloc
 {
 	[_data release];
-	_data = nil;
 	[_header release];
+	_data = nil;
 	_header = nil;
     [super dealloc];
 }
+#endif
 
 @end

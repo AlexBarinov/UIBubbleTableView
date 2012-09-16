@@ -21,7 +21,11 @@
 
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type
 {
+#ifndef ARC_ENABLED
     return [[[NSBubbleData alloc] initWithText:text andDate:date andType:type] autorelease];
+#else
+    return [[NSBubbleData alloc] initWithText:text andDate:date andType:type];
+#endif    
 }
 
 - (id)initWithText:(NSString *)initText andDate:(NSDate *)initDate andType:(NSBubbleType)initType
@@ -29,22 +33,30 @@
     self = [super init];
     if (self)
     {
+#ifndef ARC_ENABLED
         _text = [initText retain];
+        _date = [initDate retain];
+#else
+        _text = initText;
+        _date = initDate;
+#endif
+
         if (!_text || [_text isEqualToString:@""]) _text = @" ";
         
-        _date = [initDate retain];
         _type = initType;
     }
     return self;
 }
 
+#ifndef ARC_ENABLED
 - (void)dealloc
 {
     [_date release];
-	_date = nil;
 	[_text release];
+	_date = nil;
 	_text = nil;
     [super dealloc];
 }
+#endif
 
 @end

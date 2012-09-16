@@ -75,6 +75,7 @@
     return self;
 }
 
+#ifndef ARC_ENABLED
 - (void)dealloc
 {
     [_bubbleDictionary release];
@@ -82,6 +83,7 @@
 	_bubbleDataSource = nil;
     [super dealloc];
 }
+#endif
 
 #pragma mark - Override
 
@@ -92,11 +94,19 @@
     
     // Loading new data
     int count = 0;
+#ifndef ARC_ENABLED
     self.bubbleDictionary = [[[NSMutableDictionary alloc] init] autorelease];
+#else
+    self.bubbleDictionary = [[NSMutableDictionary alloc] init];
+#endif
     
     if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
-    {        
+    {
+#ifndef ARC_ENABLED
         NSMutableArray *bubbleData = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
+#else
+        NSMutableArray *bubbleData = [[NSMutableArray alloc] initWithCapacity:count];
+#endif
         
         for (int i = 0; i < count; i++)
         {
@@ -123,7 +133,11 @@
         
         for (int i = 0; i < count; i++)
         {
+#ifndef ARC_ENABLED
             NSBubbleDataInternal *dataInternal = [[[NSBubbleDataInternal alloc] init] autorelease];
+#else
+            NSBubbleDataInternal *dataInternal = [[NSBubbleDataInternal alloc] init];
+#endif
             
             dataInternal.data = (NSBubbleData *)[bubbleData objectAtIndex:i];
             dataInternal.type = NSBubbleDataTypeNormalBubble;
@@ -137,7 +151,11 @@
             
             if ([dataInternal.data.date timeIntervalSinceDate:last] > self.snapInterval)
             {
+#ifndef ARC_ENABLED
                 currentSection = [[[NSMutableArray alloc] init] autorelease];
+#else
+                currentSection = [[NSMutableArray alloc] init];
+#endif
                 [self.bubbleDictionary setObject:currentSection forKey:[NSString stringWithFormat:@"%d", i]];
                 dataInternal.header = [dateFormatter stringFromDate:dataInternal.data.date];
                 dataInternal.height += 30;
@@ -147,14 +165,20 @@
             last = dataInternal.data.date;
         }
         
+#ifndef ARC_ENABLED
         [dateFormatter release];
+#endif
     }
     
     // Adding the typing bubble at the end of the table
     
     if (self.typingBubble != NSBubbleTypingTypeNobody)
     {
+#ifndef ARC_ENABLED
         NSBubbleDataInternal *dataInternal = [[[NSBubbleDataInternal alloc] init] autorelease];
+#else
+        NSBubbleDataInternal *dataInternal = [[NSBubbleDataInternal alloc] init];
+#endif
         
         dataInternal.data = nil;
         dataInternal.type = NSBubbleDataTypeTypingBubble;
@@ -246,11 +270,14 @@
                 bubbleImage = [UIImage imageNamed:@"typingSomeone.png"]; 
                 x = 4;
             }
-
             
             UIImageView *bubbleImageView = [[UIImageView alloc] initWithImage:bubbleImage];
             bubbleImageView.frame = CGRectMake(x, 4, 73, 31);
+#ifndef ARC_ENABLED
             [cell addSubview:[bubbleImageView autorelease]];
+#else
+            [cell addSubview:bubbleImageView];
+#endif
         }
         
         return cell;

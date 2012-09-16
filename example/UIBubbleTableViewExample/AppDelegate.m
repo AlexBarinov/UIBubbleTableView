@@ -20,17 +20,24 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
+#ifndef ARC_ENABLED
 - (void)dealloc
 {
     [_window release];
     [_viewController release];
     [super dealloc];
 }
+#endif
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#ifndef ARC_ENABLED
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+#else
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+#endif
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
