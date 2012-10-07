@@ -31,7 +31,7 @@
         <hr>
 
         <section id="main_content">
-          <p>UIBubbleTableView is UITableView based iOS component for rendering chats like it's done in Messages application.</p>
+          <p>UIBubbleTableView is UITableView based iOS component for rendering chats like it's done in Messages application. Now comes with "typing" bubble and images in the chat!</p>
 
 <p><img src="http://alexbarinov.github.com/UIBubbleTableView/img/screenshot.png" alt="Screenshot"></p>
 
@@ -46,6 +46,21 @@
 </li>
 </ol><p>Check out the demo project which is located in <code>example</code> directory to see how it works.</p>
 
+<h2>Features</h2>
+    
+<h3>Messages grouping</h3>
+    <p>The messages received within specified time interval will be grouped into one chat conversation. Each chat conversation is prerendered with date label. You can change this time interval by setting <code>NSTimeInterval snapInterval</code> property  of <code>UIBubbleTableView</code></p>
+    
+<h3>Now typing bubble</h3>
+    <p>You can set the "now typing" bubble (small gray bubble with 3 dots inside) with <code>NSBubbleTypingType typingBubble</code> property. It can be displayed like you are typing (<code>NSBubbleTypingTypeMe</code>), or somebody's typing (<code>NSBubbleTypingTypeMe</code>). Or you can hide it with <code>NSBubbleTypingTypeNone</code>. Table data reload is now required for the bubble to show or to hide.</p>
+    
+<h3>Images and more...</h3>
+    <p>You can now place any custom view into bubble by calling <code>+ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets</code>. This is good approach to insert anything you want into chat bubble.</p>
+    <p>There's a decicated method to insert images into chat: <code>+ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type</code>. Check out the example!
+    
+<h3>Other colors for bubbles</h3>
+    <p>You are welcome to create bubbles of any color you want. To archive this open the PSD files downloaded with the project in <code>psd</code> folder (you'll need Adobe Photoshop), in the Shape layer change the Gradient overlay effect the way you want and save the file in PNG in the <code>images</code> folder.</p>
+    
 <h2>UIBubbleTableViewDataSource</h2>
 
 <p>Currently there are 2 required methods to implement in the data source:</p>
@@ -61,20 +76,8 @@
 <li>Message text (<code>NSString *text</code>)</li>
 <li>Message type: incoming or outgoing (<code>NSBubbleType type</code>)</li>
 <li>Message date (<code>NSDate *date</code>)</li>
-</ul><p>It's good idea to use <code>+ (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type</code> to create bubble data.</p>
+</ul><p>It's good idea to use <code>+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type</code> to create bubble data.</p>
 
-<h2>Features</h2>
-
-<h3>Messages grouping</h3>
-
-<p>The messages received within specified time interval will be grouped into one chat conversation. Each chat conversation is prerendered with date label. You can change this time interval by setting <code>NSTimeInterval snapInterval</code> property  of <code>UIBubbleTableView</code></p>
-
-<h3>Now typing bubble</h3>
-    <p>You can set the "now typing" bubble (small gray bubble with 3 dots inside) with <code>NSBubbleTypingType typingBubble</code> property. It can be displayed like you are typing (<code>NSBubbleTypingTypeMe</code>), or somebody's typing (<code>NSBubbleTypingTypeMe</code>). Or you can hide it with <code>NSBubbleTypingTypeNone</code>. Table data reload is now required for the bubble to show or to hide.</p>
-    
-<h3>Other colors for bubbles</h3>
-
-<p>You are welcome to create bubbles of any color you want. To archive this open the PSD files downloaded with the project in <code>psd</code> folder (you'll need Adobe Photoshop), in the Shape layer change the Gradient overlay effect the way you want and save the file in PNG in the <code>images</code> folder.</p>
 <!--
 <h2>Known limitations</h2>
 
@@ -98,8 +101,9 @@
 <p>Special thanks to:</p>
 
 <ul>
-    <li>Anna Komleva &ndash; for drawing UI</li>
-    <li>Scott Gruby &ndash; for fixes in memory management</li>
+    <li><a href="https://github.com/krolia">Anna Komleva</a> &ndash; for drawing UI</li>
+    <li><a href="https://github.com/sgruby">Scott Gruby</a> &ndash; for fixes in memory management</li>
+    <li><a href="https://github.com/ipodishima">Marian Paul</a> &ndash; for making custom views in bubbles</li> 
 </ul>
     
         </section>
