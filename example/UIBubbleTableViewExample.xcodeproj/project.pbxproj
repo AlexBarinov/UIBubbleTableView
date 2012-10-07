@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		760D63931621BF100026FA70 /* fields.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 760D63921621BF100026FA70 /* fields.jpg */; };
 		76ED206315BF096C00E186D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206215BF096C00E186D3 /* UIKit.framework */; };
 		76ED206515BF096C00E186D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206415BF096C00E186D3 /* Foundation.framework */; };
 		76ED206715BF096C00E186D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206615BF096C00E186D3 /* CoreGraphics.framework */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		760D63921621BF100026FA70 /* fields.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fields.jpg; sourceTree = SOURCE_ROOT; };
 		76ED205E15BF096C00E186D3 /* UIBubbleTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIBubbleTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED206215BF096C00E186D3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED206415BF096C00E186D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -127,6 +129,7 @@
 		76ED206915BF096C00E186D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				760D63921621BF100026FA70 /* fields.jpg */,
 				C86D4FFD15BFEBC1003F161E /* icon_114.png */,
 				C86D4FFB15BFEBBF003F161E /* icon_57.png */,
 				76ED206A15BF096C00E186D3 /* UIBubbleTableViewExample-Info.plist */,
@@ -233,6 +236,7 @@
 				C83B107E15DE43180067DADE /* typingMine@2x.png in Resources */,
 				C83B107F15DE43180067DADE /* typingSomeone.png in Resources */,
 				C83B108015DE43180067DADE /* typingSomeone@2x.png in Resources */,
+				760D63931621BF100026FA70 /* fields.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
 @synthesize date = _date;
 @synthesize type = _type;
 @synthesize text = _text;
+@synthesize view = _view;
 
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type
 {
@@ -28,22 +29,44 @@
 #endif    
 }
 
-- (id)initWithText:(NSString *)initText andDate:(NSDate *)initDate andType:(NSBubbleType)initType
+- (id)initWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)initType
 {
     self = [super init];
     if (self)
     {
 #if !__has_feature(objc_arc)
-        _text = [initText retain];
-        _date = [initDate retain];
+        _text = [text retain];
+        _date = [date retain];
 #else
-        _text = initText;
-        _date = initDate;
+        _text = text;
+        _date = date;
 #endif
 
         if (!_text || [_text isEqualToString:@""]) _text = @" ";
         
         _type = initType;
+    }
+    return self;
+}
+
++ (id)dataWithView:(UIView *)view andDate:(NSDate *)date andType:(NSBubbleType)type
+{
+    return [[[NSBubbleData alloc] initWithView:view andDate:date andType:type] autorelease];
+}
+
+- (id)initWithView:(UIView *)view andDate:(NSDate *)date andType:(NSBubbleType)type
+{
+    self = [super init];
+    if (self)
+    {
+#if !__has_feature(objc_arc)
+        _view = [view retain];
+        _date = [date retain];
+#else
+        _view = view;
+        _date = date;
+#endif
+        _type = type;
     }
     return self;
 }
@@ -55,6 +78,8 @@
 	[_text release];
 	_date = nil;
 	_text = nil;
+    [_view release];
+    _view = nil;
     [super dealloc];
 }
 #endif
