@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		760D63931621BF100026FA70 /* fields.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 760D63921621BF100026FA70 /* fields.jpg */; };
+		76687AFD1622039C00707588 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */; };
+		76687AFF162203AF00707588 /* halloween.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76687AFE162203AF00707588 /* halloween.jpg */; };
+		76D097CC1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */; };
 		76ED206315BF096C00E186D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206215BF096C00E186D3 /* UIKit.framework */; };
 		76ED206515BF096C00E186D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206415BF096C00E186D3 /* Foundation.framework */; };
 		76ED206715BF096C00E186D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206615BF096C00E186D3 /* CoreGraphics.framework */; };
@@ -18,9 +20,7 @@
 		76ED207915BF096C00E186D3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76ED207715BF096C00E186D3 /* ViewController.xib */; };
 		76ED208715BF09E300E186D3 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208615BF09E300E186D3 /* UIBubbleTableView.m */; };
 		76ED208B15BF0BB100E186D3 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208A15BF0BB100E186D3 /* NSBubbleData.m */; };
-		76ED209115BF263600E186D3 /* NSBubbleDataInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209015BF263600E186D3 /* NSBubbleDataInternal.m */; };
 		76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */; };
-		76ED209615BF2A1400E186D3 /* UIBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76ED209515BF2A1400E186D3 /* UIBubbleTableViewCell.xib */; };
 		C83B107915DE43180067DADE /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = C83B107115DE43180067DADE /* bubbleMine.png */; };
 		C83B107A15DE43180067DADE /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C83B107215DE43180067DADE /* bubbleMine@2x.png */; };
 		C83B107B15DE43180067DADE /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = C83B107315DE43180067DADE /* bubbleSomeone.png */; };
@@ -34,7 +34,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		760D63921621BF100026FA70 /* fields.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fields.jpg; sourceTree = SOURCE_ROOT; };
+		76687AFB1622039C00707588 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTypingTableViewCell.h; path = ../../src/UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
+		76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTypingTableViewCell.m; path = ../../src/UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
+		76687AFE162203AF00707588 /* halloween.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = halloween.jpg; sourceTree = SOURCE_ROOT; };
+		76D097CA1621F0E000C17816 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleHeaderTableViewCell.h; path = ../../src/UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
+		76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleHeaderTableViewCell.m; path = ../../src/UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
 		76ED205E15BF096C00E186D3 /* UIBubbleTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIBubbleTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED206215BF096C00E186D3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED206415BF096C00E186D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,11 +57,8 @@
 		76ED208815BF0B4400E186D3 /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableViewDataSource.h; path = ../../src/UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
 		76ED208915BF0BB100E186D3 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSBubbleData.h; path = ../../src/NSBubbleData.h; sourceTree = "<group>"; };
 		76ED208A15BF0BB100E186D3 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSBubbleData.m; path = ../../src/NSBubbleData.m; sourceTree = "<group>"; };
-		76ED208F15BF263600E186D3 /* NSBubbleDataInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSBubbleDataInternal.h; path = ../../src/NSBubbleDataInternal.h; sourceTree = "<group>"; };
-		76ED209015BF263600E186D3 /* NSBubbleDataInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSBubbleDataInternal.m; path = ../../src/NSBubbleDataInternal.m; sourceTree = "<group>"; };
 		76ED209215BF29EE00E186D3 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableViewCell.h; path = ../../src/UIBubbleTableViewCell.h; sourceTree = "<group>"; };
 		76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTableViewCell.m; path = ../../src/UIBubbleTableViewCell.m; sourceTree = "<group>"; };
-		76ED209515BF2A1400E186D3 /* UIBubbleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIBubbleTableViewCell.xib; path = ../../src/UIBubbleTableViewCell.xib; sourceTree = "<group>"; };
 		C83B107115DE43180067DADE /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
 		C83B107215DE43180067DADE /* bubbleMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleMine@2x.png"; sourceTree = "<group>"; };
 		C83B107315DE43180067DADE /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleSomeone.png; sourceTree = "<group>"; };
@@ -129,7 +130,7 @@
 		76ED206915BF096C00E186D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				760D63921621BF100026FA70 /* fields.jpg */,
+				76687AFE162203AF00707588 /* halloween.jpg */,
 				C86D4FFD15BFEBC1003F161E /* icon_114.png */,
 				C86D4FFB15BFEBBF003F161E /* icon_57.png */,
 				76ED206A15BF096C00E186D3 /* UIBubbleTableViewExample-Info.plist */,
@@ -145,13 +146,14 @@
 			children = (
 				76ED208915BF0BB100E186D3 /* NSBubbleData.h */,
 				76ED208A15BF0BB100E186D3 /* NSBubbleData.m */,
-				76ED208F15BF263600E186D3 /* NSBubbleDataInternal.h */,
-				76ED209015BF263600E186D3 /* NSBubbleDataInternal.m */,
 				76ED208515BF09E300E186D3 /* UIBubbleTableView.h */,
 				76ED208615BF09E300E186D3 /* UIBubbleTableView.m */,
 				76ED209215BF29EE00E186D3 /* UIBubbleTableViewCell.h */,
 				76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */,
-				76ED209515BF2A1400E186D3 /* UIBubbleTableViewCell.xib */,
+				76D097CA1621F0E000C17816 /* UIBubbleHeaderTableViewCell.h */,
+				76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */,
+				76687AFB1622039C00707588 /* UIBubbleTypingTableViewCell.h */,
+				76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */,
 				76ED208815BF0B4400E186D3 /* UIBubbleTableViewDataSource.h */,
 			);
 			name = src;
@@ -225,7 +227,6 @@
 			files = (
 				76ED206D15BF096C00E186D3 /* InfoPlist.strings in Resources */,
 				76ED207915BF096C00E186D3 /* ViewController.xib in Resources */,
-				76ED209615BF2A1400E186D3 /* UIBubbleTableViewCell.xib in Resources */,
 				C86D4FFC15BFEBBF003F161E /* icon_57.png in Resources */,
 				C86D4FFE15BFEBC1003F161E /* icon_114.png in Resources */,
 				C83B107915DE43180067DADE /* bubbleMine.png in Resources */,
@@ -236,7 +237,7 @@
 				C83B107E15DE43180067DADE /* typingMine@2x.png in Resources */,
 				C83B107F15DE43180067DADE /* typingSomeone.png in Resources */,
 				C83B108015DE43180067DADE /* typingSomeone@2x.png in Resources */,
-				760D63931621BF100026FA70 /* fields.jpg in Resources */,
+				76687AFF162203AF00707588 /* halloween.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,8 +253,9 @@
 				76ED207615BF096C00E186D3 /* ViewController.m in Sources */,
 				76ED208715BF09E300E186D3 /* UIBubbleTableView.m in Sources */,
 				76ED208B15BF0BB100E186D3 /* NSBubbleData.m in Sources */,
-				76ED209115BF263600E186D3 /* NSBubbleDataInternal.m in Sources */,
 				76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */,
+				76D097CC1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m in Sources */,
+				76687AFD1622039C00707588 /* UIBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

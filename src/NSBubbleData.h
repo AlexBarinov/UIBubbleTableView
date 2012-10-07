@@ -2,9 +2,6 @@
 //  NSBubbleData.h
 //
 //  Created by Alex Barinov
-//  StexGroup, LLC
-//  http://www.stexgroup.com
-//
 //  Project home page: http://alexbarinov.github.com/UIBubbleTableView/
 //
 //  This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
@@ -23,12 +20,14 @@ typedef enum _NSBubbleType
 
 @property (readonly, nonatomic, strong) NSDate *date;
 @property (readonly, nonatomic) NSBubbleType type;
-@property (readonly, nonatomic, strong) NSString *text;
 @property (readonly, nonatomic, strong) UIView *view;
+@property (readonly, nonatomic) UIEdgeInsets insets;
 
-- (id)initWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;
-+ (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type;
-- (id)initWithView:(UIView *)view andDate:(NSDate *)date andType:(NSBubbleType)type;
-+ (id)dataWithView:(UIView *)view andDate:(NSDate *)date andType:(NSBubbleType)type;
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type;
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type;
+- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type;
++ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type;
+- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets;
++ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets;
 
 @end

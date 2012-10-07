@@ -2,13 +2,15 @@
 //  ViewController.m
 //
 //  Created by Alex Barinov
-//  StexGroup, LLC
-//  http://www.stexgroup.com
-//
 //  Project home page: http://alexbarinov.github.com/UIBubbleTableView/
 //
 //  This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
 //  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/
+//
+
+// 
+// Halloween image used in this example by Petr Kratochvil released into public domain
+// http://www.publicdomainpictures.net/view-image.php?image=9806&picture=halloween-autumn-theme
 //
 
 #import "ViewController.h"
@@ -23,12 +25,9 @@
     [super viewDidLoad];
 
     bubbleData = [[NSMutableArray alloc] initWithObjects:
-                  [NSBubbleData dataWithText:@"Marge, there's something that I want to ask you, but I'm afraid, because if you say no, it will destroy me and make me a criminal." andDate:[NSDate dateWithTimeIntervalSinceNow:-300] andType:BubbleTypeMine],
-                  [NSBubbleData dataWithText:@"Well, I haven't said no to you yet, have I?" andDate:[NSDate dateWithTimeIntervalSinceNow:-280] andType:BubbleTypeSomeoneElse],
-                  [NSBubbleData dataWithText:@"Marge... Oh, damn it." andDate:[NSDate dateWithTimeIntervalSinceNow:0] andType:BubbleTypeMine],
-                  [NSBubbleData dataWithText:@"What's wrong?" andDate:[NSDate dateWithTimeIntervalSinceNow:300]  andType:BubbleTypeSomeoneElse],
-                  [NSBubbleData dataWithText:@"Ohn I wrote down what I wanted to say on a card.." andDate:[NSDate dateWithTimeIntervalSinceNow:395]  andType:BubbleTypeMine],
-                  [NSBubbleData dataWithText:@"The stupid thing must have fallen out of my pocket." andDate:[NSDate dateWithTimeIntervalSinceNow:400]  andType:BubbleTypeMine],
+                  [NSBubbleData dataWithText:@"Hey, halloween is soon" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse],
+                  [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse],
+                  [NSBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine],
                   nil];
     
     bubbleTable.bubbleDataSource = self;

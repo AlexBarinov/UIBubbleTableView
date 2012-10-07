@@ -2,28 +2,29 @@
 //  UIBubbleTableViewCell.m
 //
 //  Created by Alex Barinov
-//  StexGroup, LLC
-//  http://www.stexgroup.com
-//
 //  Project home page: http://alexbarinov.github.com/UIBubbleTableView/
 //
 //  This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
 //  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/
 //
 
-
 #import "UIBubbleTableViewCell.h"
 #import "NSBubbleData.h"
 
 @interface UIBubbleTableViewCell ()
+
+@property (nonatomic, retain) UIView *customView;
+@property (nonatomic, retain) UIImageView *bubbleImage;
+
 - (void) setupInternalData;
-@property (nonatomic, retain) UIView *oldCustomView;
+
 @end
 
 @implementation UIBubbleTableViewCell
 
-@synthesize dataInternal = _dataInternal;
-@synthesize oldCustomView = _oldCustomView;
+@synthesize data = _data;
+@synthesize customView = _customView;
+@synthesize bubbleImage = _bubbleImage;
 
 - (void)setFrame:(CGRect)frame
 {
@@ -34,73 +35,58 @@
 #if !__has_feature(objc_arc)
 - (void) dealloc
 {
-    [_dataInternal release];
-	_dataInternal = nil;
-    [_oldCustomView release];
-    _oldCustomView = nil;
+    [_data release];
+	_data = nil;
+    [_customView release];
+    _customView = nil;
     [super dealloc];
 }
 #endif
 
 
-- (void)setDataInternal:(NSBubbleDataInternal *)value
+- (void)setDataInternal:(NSBubbleData *)value
 {
 #if !__has_feature(objc_arc)
 	[value retain];
-	[_dataInternal release];
+	[_data release];
 #endif
-	_dataInternal = value;
+	_data = value;
 	[self setupInternalData];
 }
 
 - (void) setupInternalData
 {
-    if (self.dataInternal.header)
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (!self.bubbleImage)
     {
-        headerLabel.hidden = NO;
-        headerLabel.text = self.dataInternal.header;
-    }
-    else
-    {
-        headerLabel.hidden = YES;
+        self.bubbleImage = [[UIImageView alloc] init];
+        [self addSubview:self.bubbleImage];
     }
     
-    NSBubbleType type = self.dataInternal.data.type;
-    CGFloat imageOffsetX = 5.0;
-    CGFloat imageOffsetY = 6.0;
+    NSBubbleType type = self.data.type;
     
-    CGFloat height = self.dataInternal.data.view ? (CGRectGetHeight(self.dataInternal.data.view.frame) + imageOffsetY*2.0) : self.dataInternal.labelSize.height;
-    CGFloat width = self.dataInternal.data.view ? (CGRectGetWidth(self.dataInternal.data.view.frame) + imageOffsetX*2.0) : self.dataInternal.labelSize.width;
+    CGFloat width = self.data.view.frame.size.width;
+    CGFloat height = self.data.view.frame.size.height;
 
-    float x = (type == BubbleTypeSomeoneElse) ? 20 : self.frame.size.width - 20 - width;
-    float y = 5 + (self.dataInternal.header ? 30 : 0);
+    CGFloat x = (type == BubbleTypeSomeoneElse) ? 0 : self.frame.size.width - width - self.data.insets.left - self.data.insets.right;
+    CGFloat y = 0;
     
-    [self.oldCustomView removeFromSuperview];
-    self.oldCustomView = nil;
-        
-    if (!self.dataInternal.data.view) 
-    {
-        contentLabel.hidden = NO;
-        contentLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-        contentLabel.frame = CGRectMake(x, y, self.dataInternal.labelSize.width, self.dataInternal.labelSize.height);
-        contentLabel.text = self.dataInternal.data.text;
-    }
-    else
-    {
-        contentLabel.hidden = YES;
-        self.oldCustomView = self.dataInternal.data.view;
-        [self.contentView addSubview:self.oldCustomView];
-        self.oldCustomView.frame = CGRectMake(x+imageOffsetX-1.0, y+imageOffsetY+3.0, CGRectGetWidth(self.oldCustomView.frame), CGRectGetHeight(self.oldCustomView.frame));
-    }
+    [self.customView removeFromSuperview];
+    self.customView = self.data.view;
+    self.customView.frame = CGRectMake(x + self.data.insets.left, y + self.data.insets.top, width, height);
+    [self.contentView addSubview:self.customView];
+
     if (type == BubbleTypeSomeoneElse)
     {
-        bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
-        bubbleImage.frame = CGRectMake(x - 18, y - 4, width + 30, height + 15);
+        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
+
     }
     else {
-        bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
-        bubbleImage.frame = CGRectMake(x - 9, y - 4, width + 26, height + 15);
+        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
     }
+
+    self.bubbleImage.frame = CGRectMake(x, y, width + self.data.insets.left + self.data.insets.right, height + self.data.insets.top + self.data.insets.bottom);
 }
 
 @end

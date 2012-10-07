@@ -2,9 +2,6 @@
 //  UIBubbleTableView.m
 //
 //  Created by Alex Barinov
-//  StexGroup, LLC
-//  http://www.stexgroup.com
-//
 //  Project home page: http://alexbarinov.github.com/UIBubbleTableView/
 //
 //  This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
@@ -13,11 +10,12 @@
 
 #import "UIBubbleTableView.h"
 #import "NSBubbleData.h"
-#import "NSBubbleDataInternal.h"
+#import "UIBubbleHeaderTableViewCell.h"
+#import "UIBubbleTypingTableViewCell.h"
 
 @interface UIBubbleTableView ()
 
-@property (nonatomic, retain) NSMutableDictionary *bubbleDictionary;
+@property (nonatomic, retain) NSMutableArray *bubbleSection;
 
 @end
 
@@ -25,7 +23,7 @@
 
 @synthesize bubbleDataSource = _bubbleDataSource;
 @synthesize snapInterval = _snapInterval;
-@synthesize bubbleDictionary = _bubbleDictionary;
+@synthesize bubbleSection = _bubbleSection;
 @synthesize typingBubble = _typingBubble;
 
 #pragma mark - Initializators
@@ -78,8 +76,8 @@
 #if !__has_feature(objc_arc)
 - (void)dealloc
 {
-    [_bubbleDictionary release];
-	_bubbleDictionary = nil;
+    [_bubbleSection release];
+	_bubbleSection = nil;
 	_bubbleDataSource = nil;
     [super dealloc];
 }
@@ -89,15 +87,18 @@
 
 - (void)reloadData
 {
+    self.showsVerticalScrollIndicator = NO;
+    self.showsHorizontalScrollIndicator = NO;
+    
     // Cleaning up
-	self.bubbleDictionary = nil;
+	self.bubbleSection = nil;
     
     // Loading new data
     int count = 0;
 #if !__has_feature(objc_arc)
-    self.bubbleDictionary = [[[NSMutableDictionary alloc] init] autorelease];
+    self.bubbleSection = [[[NSMutableArray alloc] init] autorelease];
 #else
-    self.bubbleDictionary = [[NSMutableDictionary alloc] init];
+    self.bubbleSection = [[NSMutableArray alloc] init];
 #endif
     
     if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
@@ -116,83 +117,33 @@
         }
         
         [bubbleData sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
-        {
-
-            NSBubbleData *bubbleData1 = (NSBubbleData *)obj1;
-            NSBubbleData *bubbleData2 = (NSBubbleData *)obj2;
-            
-            return [bubbleData1.date compare:bubbleData2.date];            
-        }];
+         {
+             NSBubbleData *bubbleData1 = (NSBubbleData *)obj1;
+             NSBubbleData *bubbleData2 = (NSBubbleData *)obj2;
+             
+             return [bubbleData1.date compare:bubbleData2.date];            
+         }];
         
         NSDate *last = [NSDate dateWithTimeIntervalSince1970:0];
         NSMutableArray *currentSection = nil;
         
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-        
         for (int i = 0; i < count; i++)
         {
-#if !__has_feature(objc_arc)
-            NSBubbleDataInternal *dataInternal = [[[NSBubbleDataInternal alloc] init] autorelease];
-#else
-            NSBubbleDataInternal *dataInternal = [[NSBubbleDataInternal alloc] init];
-#endif
+            NSBubbleData *data = (NSBubbleData *)[bubbleData objectAtIndex:i];
             
-            dataInternal.data = (NSBubbleData *)[bubbleData objectAtIndex:i];
-            dataInternal.type = NSBubbleDataTypeNormalBubble;
-            
-            // Calculating cell height
-            CGFloat dataHeight = 0.0;
-            if (dataInternal.data.text)
-            {
-                dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
-                dataHeight = dataInternal.labelSize.height;
-            }
-            else
-                dataHeight = CGRectGetHeight(dataInternal.data.view.frame)+12.0 /*cf offsetY in cell. this not really cool implementation all these values*/;
-            
-            dataInternal.height = dataHeight + 5 + 11;
-            
-            dataInternal.header = nil;
-            
-            if ([dataInternal.data.date timeIntervalSinceDate:last] > self.snapInterval)
+            if ([data.date timeIntervalSinceDate:last] > self.snapInterval)
             {
 #if !__has_feature(objc_arc)
                 currentSection = [[[NSMutableArray alloc] init] autorelease];
 #else
                 currentSection = [[NSMutableArray alloc] init];
 #endif
-                [self.bubbleDictionary setObject:currentSection forKey:[NSString stringWithFormat:@"%d", i]];
-                dataInternal.header = [dateFormatter stringFromDate:dataInternal.data.date];
-                dataInternal.height += 30;
+                [self.bubbleSection addObject:currentSection];
             }
-
-            [currentSection addObject:dataInternal];
-            last = dataInternal.data.date;
+            
+            [currentSection addObject:data];
+            last = data.date;
         }
-        
-#if !__has_feature(objc_arc)
-        [dateFormatter release];
-#endif
-    }
-    
-    // Adding the typing bubble at the end of the table
-    
-    if (self.typingBubble != NSBubbleTypingTypeNobody)
-    {
-#if !__has_feature(objc_arc)
-        NSBubbleDataInternal *dataInternal = [[[NSBubbleDataInternal alloc] init] autorelease];
-#else
-        NSBubbleDataInternal *dataInternal = [[NSBubbleDataInternal alloc] init];
-#endif
-        
-        dataInternal.data = nil;
-        dataInternal.type = NSBubbleDataTypeTypingBubble;
-        dataInternal.labelSize = CGSizeMake(0, 0);
-        dataInternal.height = 40;
-        
-        [self.bubbleDictionary setObject:[NSMutableArray arrayWithObject:dataInternal] forKey:[NSString stringWithFormat:@"%d", count]];
     }
     
     [super reloadData];
@@ -204,93 +155,70 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.bubbleDictionary allKeys] count];
+    int result = [self.bubbleSection count];
+    if (self.typingBubble != NSBubbleTypingTypeNobody) result++;
+    return result;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	NSArray *keys = [self.bubbleDictionary allKeys];
-	NSArray *sortedArray = [keys sortedArrayUsingComparator:^(id firstObject, id secondObject) {
-		return [((NSString *)firstObject) compare:((NSString *)secondObject) options:NSNumericSearch];
-	}];
-    NSString *key = [sortedArray objectAtIndex:section];
-    return [[self.bubbleDictionary objectForKey:key] count];
+    // This is for now typing bubble
+	if (section >= [self.bubbleSection count]) return 1;
+    
+    return [[self.bubbleSection objectAtIndex:section] count] + 1;
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSArray *keys = [self.bubbleDictionary allKeys];
-	NSArray *sortedArray = [keys sortedArrayUsingComparator:^(id firstObject, id secondObject) {
-		return [((NSString *)firstObject) compare:((NSString *)secondObject) options:NSNumericSearch];
-	}];
-    NSString *key = [sortedArray objectAtIndex:indexPath.section];
-    NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[self.bubbleDictionary objectForKey:key] objectAtIndex:indexPath.row]);
-
-    return dataInternal.height;
+    // Now typing
+	if (indexPath.section >= [self.bubbleSection count])
+    {
+        return [UIBubbleTypingTableViewCell height];
+    }
+    
+    // Header
+    if (indexPath.row == 0)
+    {
+        return [UIBubbleHeaderTableViewCell height];
+    }
+    
+    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    return data.insets.top + data.view.frame.size.height + data.insets.bottom;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSArray *keys = [self.bubbleDictionary allKeys];
-	NSArray *sortedArray = [keys sortedArrayUsingComparator:^(id firstObject, id secondObject) {
-		return [((NSString *)firstObject) compare:((NSString *)secondObject) options:NSNumericSearch];
-	}];
-    NSString *key = [sortedArray objectAtIndex:indexPath.section];
-    
-    NSBubbleDataInternal *dataInternal = ((NSBubbleDataInternal *)[[self.bubbleDictionary objectForKey:key] objectAtIndex:indexPath.row]);
-    
-    if (dataInternal.type == NSBubbleDataTypeNormalBubble)
-    {    
-        static NSString *cellId = @"tblBubbleCell";
-        UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    
-        if (cell == nil)
-        {
-            [[NSBundle mainBundle] loadNibNamed:@"UIBubbleTableViewCell" owner:self options:nil];
-            cell = bubbleCell;
-        }
-    
-        cell.dataInternal = dataInternal;
-        return cell;
-    }
-    
-    if (dataInternal.type == NSBubbleDataTypeTypingBubble)
+    // Now typing
+	if (indexPath.section >= [self.bubbleSection count])
     {
-        static NSString *cellTypingId = @"tblBubbleTypingCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellTypingId];
+        static NSString *cellId = @"tblBubbleTypingCell";
+        UIBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] init];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            UIImage *bubbleImage = nil;
-            float x = 0;
-            
-            if (self.typingBubble == NSBubbleTypingTypeMe)
-            {
-                bubbleImage = [UIImage imageNamed:@"typingMine.png"]; 
-                x = cell.frame.size.width - 4 - bubbleImage.size.width;
-            }
-            else
-            {
-                bubbleImage = [UIImage imageNamed:@"typingSomeone.png"]; 
-                x = 4;
-            }
-            
-            UIImageView *bubbleImageView = [[UIImageView alloc] initWithImage:bubbleImage];
-            bubbleImageView.frame = CGRectMake(x, 4, 73, 31);
-#if !__has_feature(objc_arc)
-            [cell addSubview:[bubbleImageView autorelease]];
-#else
-            [cell addSubview:bubbleImageView];
-#endif
-        }
+        if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
+        cell.type = self.typingBubble;
+        return cell;
+    }
+
+    // Header with date and time
+    if (indexPath.row == 0)
+    {
+        static NSString *cellId = @"tblBubbleHeaderCell";
+        UIBubbleHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
+        if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
+        cell.date = data.date;
         return cell;
     }
     
-    return nil;
+    // Standard bubble    
+    static NSString *cellId = @"tblBubbleCell";
+    UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    
+    if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
+    cell.data = data;
+    return cell;
 }
 
 @end
