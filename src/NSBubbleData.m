@@ -21,7 +21,7 @@
 
 + (id)dataWithText:(NSString *)text andDate:(NSDate *)date andType:(NSBubbleType)type
 {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
     return [[[NSBubbleData alloc] initWithText:text andDate:date andType:type] autorelease];
 #else
     return [[NSBubbleData alloc] initWithText:text andDate:date andType:type];
@@ -33,7 +33,7 @@
     self = [super init];
     if (self)
     {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
         _text = [initText retain];
         _date = [initDate retain];
 #else
@@ -48,7 +48,7 @@
     return self;
 }
 
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
 - (void)dealloc
 {
     [_date release];

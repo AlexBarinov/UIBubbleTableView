@@ -22,7 +22,7 @@
 @synthesize height = _height;
 @synthesize labelSize = _labelSize;
 
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
 - (void)dealloc
 {
 	[_data release];

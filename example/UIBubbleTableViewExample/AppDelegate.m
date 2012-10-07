@@ -20,7 +20,7 @@
 @synthesize window = _window;
 @synthesize viewController = _viewController;
 
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
 - (void)dealloc
 {
     [_window release];
@@ -31,7 +31,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
 #else

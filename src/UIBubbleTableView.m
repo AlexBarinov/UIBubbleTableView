@@ -75,7 +75,7 @@
     return self;
 }
 
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
 - (void)dealloc
 {
     [_bubbleDictionary release];
@@ -94,7 +94,7 @@
     
     // Loading new data
     int count = 0;
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
     self.bubbleDictionary = [[[NSMutableDictionary alloc] init] autorelease];
 #else
     self.bubbleDictionary = [[NSMutableDictionary alloc] init];
@@ -102,7 +102,7 @@
     
     if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
     {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
         NSMutableArray *bubbleData = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
 #else
         NSMutableArray *bubbleData = [[NSMutableArray alloc] initWithCapacity:count];
@@ -133,7 +133,7 @@
         
         for (int i = 0; i < count; i++)
         {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
             NSBubbleDataInternal *dataInternal = [[[NSBubbleDataInternal alloc] init] autorelease];
 #else
             NSBubbleDataInternal *dataInternal = [[NSBubbleDataInternal alloc] init];
@@ -151,7 +151,7 @@
             
             if ([dataInternal.data.date timeIntervalSinceDate:last] > self.snapInterval)
             {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
                 currentSection = [[[NSMutableArray alloc] init] autorelease];
 #else
                 currentSection = [[NSMutableArray alloc] init];
@@ -165,7 +165,7 @@
             last = dataInternal.data.date;
         }
         
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
         [dateFormatter release];
 #endif
     }
@@ -174,7 +174,7 @@
     
     if (self.typingBubble != NSBubbleTypingTypeNobody)
     {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
         NSBubbleDataInternal *dataInternal = [[[NSBubbleDataInternal alloc] init] autorelease];
 #else
         NSBubbleDataInternal *dataInternal = [[NSBubbleDataInternal alloc] init];
@@ -273,7 +273,7 @@
             
             UIImageView *bubbleImageView = [[UIImageView alloc] initWithImage:bubbleImage];
             bubbleImageView.frame = CGRectMake(x, 4, 73, 31);
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
             [cell addSubview:[bubbleImageView autorelease]];
 #else
             [cell addSubview:bubbleImageView];

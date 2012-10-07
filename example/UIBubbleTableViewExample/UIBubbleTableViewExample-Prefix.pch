@@ -2,9 +2,6 @@
 // Prefix header for all source files of the 'UIBubbleTableViewExample' target in the 'UIBubbleTableViewExample' project
 //
 
-// Uncomment the following line for the project to support ARC
-//#define ARC_ENABLED
-
 #import <Availability.h>
 
 #ifndef __IPHONE_4_0

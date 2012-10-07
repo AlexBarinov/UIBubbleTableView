@@ -29,7 +29,7 @@
 	[self setupInternalData];
 }
 
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
 - (void) dealloc
 {
     [_dataInternal release];
@@ -41,7 +41,7 @@
 
 - (void)setDataInternal:(NSBubbleDataInternal *)value
 {
-#ifndef ARC_ENABLED
+#if !__has_feature(objc_arc)
 	[value retain];
 	[_dataInternal release];
 #endif
