@@ -20,5 +20,6 @@
 
 - (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView;
 - (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row;
+- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

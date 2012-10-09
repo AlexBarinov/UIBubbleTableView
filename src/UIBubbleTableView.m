@@ -221,4 +221,11 @@
     return cell;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.bubbleDataSource didSelectRowAtIndexPath:indexPath];
+}
+
+
 @end
