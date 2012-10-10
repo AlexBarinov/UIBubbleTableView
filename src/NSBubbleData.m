@@ -9,6 +9,7 @@
 //
 
 #import "NSBubbleData.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation NSBubbleData
 
@@ -18,6 +19,7 @@
 @synthesize type = _type;
 @synthesize view = _view;
 @synthesize insets = _insets;
+@synthesize avatar = _avatar;
 
 #pragma mark - Lifecycle
 
@@ -28,6 +30,9 @@
 	_date = nil;
     [_view release];
     _view = nil;
+    
+    self.avatar = nil;
+
     [super dealloc];
 }
 #endif
@@ -91,6 +96,9 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     imageView.image = image;
+    imageView.layer.cornerRadius = 5.0;
+    imageView.layer.masksToBounds = YES;
+
     
 #if !__has_feature(objc_arc)
     [imageView autorelease];

@@ -25,6 +25,7 @@
 @synthesize snapInterval = _snapInterval;
 @synthesize bubbleSection = _bubbleSection;
 @synthesize typingBubble = _typingBubble;
+@synthesize showAvatars = _showAvatars;
 
 #pragma mark - Initializators
 
@@ -42,7 +43,7 @@
     // UIBubbleTableView default properties
     
     self.snapInterval = 120;
-    self.typingBubble = NSBubbleTypingTypeMe;
+    self.typingBubble = NSBubbleTypingTypeNobody;
 }
 
 - (id)init
@@ -173,7 +174,7 @@
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        return [UIBubbleTypingTableViewCell height];
+        return MAX([UIBubbleTypingTableViewCell height], self.showAvatars ? 52 : 0);
     }
     
     // Header
@@ -183,7 +184,7 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return data.insets.top + data.view.frame.size.height + data.insets.bottom;
+    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -195,7 +196,10 @@
         UIBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         
         if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
+
         cell.type = self.typingBubble;
+        cell.showAvatar = self.showAvatars;
+        
         return cell;
     }
 
@@ -207,7 +211,9 @@
         NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
         if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
+
         cell.date = data.date;
+       
         return cell;
     }
     
@@ -217,7 +223,10 @@
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
+    
     cell.data = data;
+    cell.showAvatar = self.showAvatars;
+    
     return cell;
 }
 

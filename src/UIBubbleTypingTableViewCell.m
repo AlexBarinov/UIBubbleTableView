@@ -17,7 +17,8 @@
 @implementation UIBubbleTypingTableViewCell
 
 @synthesize type = _type;
-@synthesize typingImageView;
+@synthesize typingImageView = _typingImageView;
+@synthesize showAvatar = _showAvatar;
 
 + (CGFloat)height
 {
