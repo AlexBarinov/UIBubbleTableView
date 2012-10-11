@@ -18,6 +18,7 @@
 @synthesize type = _type;
 @synthesize view = _view;
 @synthesize insets = _insets;
+@synthesize customField = _customField;
 
 #pragma mark - Lifecycle
 
