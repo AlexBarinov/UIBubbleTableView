@@ -224,7 +224,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.bubbleDataSource didSelectRowAtIndexPath:indexPath];
+    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    [self.bubbleDataSource didSelectNSBubbleDataCell:data];
 }
 
 
