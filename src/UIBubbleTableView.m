@@ -145,7 +145,12 @@
             // Calculating cell height
             dataInternal.labelSize = [(dataInternal.data.text ? dataInternal.data.text : @"") sizeWithFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
             
-            dataInternal.height = dataInternal.labelSize.height + 5 + 11;
+            dataInternal.height = dataInternal.labelSize.height;
+            
+            // Bump height if avatar is rather large compared to text size
+            if (dataInternal.data.avatar && dataInternal.height < (dataInternal.data.avatar.size.height + 10))
+                dataInternal.height = dataInternal.data.avatar.size.height + 10;
+            dataInternal.height += 5 + 11; // height padding
             
             dataInternal.header = nil;
             

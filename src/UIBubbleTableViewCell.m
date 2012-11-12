@@ -63,7 +63,9 @@
     
     NSBubbleType type = self.dataInternal.data.type;
     
-    float x = (type == BubbleTypeSomeoneElse) ? 20 : self.frame.size.width - 20 - self.dataInternal.labelSize.width;
+    float avatarOffset = self.dataInternal.data.avatar ? 75 : 0;
+    
+    float x = (type == BubbleTypeSomeoneElse) ? 20 + avatarOffset : self.frame.size.width - 20 - self.dataInternal.labelSize.width - avatarOffset;
     float y = 5 + (self.dataInternal.header ? 30 : 0);
     
     contentLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
@@ -78,6 +80,17 @@
     else {
         bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
         bubbleImage.frame = CGRectMake(x - 9, y - 4, self.dataInternal.labelSize.width + 26, self.dataInternal.labelSize.height + 15);
+    }
+    
+    avatarImage.image = self.dataInternal.data.avatar;
+    if (avatarOffset > 0)
+    {
+        CGRect avatarFrame = avatarImage.frame;
+        // avatar is 17 px from edge
+        avatarFrame.origin.x = type == BubbleTypeSomeoneElse ? 17 : self.frame.size.width - 17 - avatarFrame.size.width;
+        // align the bottom of the avatar with the bottom of the chat bubble
+        avatarFrame.origin.y = bubbleImage.frame.origin.y + bubbleImage.frame.size.height - avatarFrame.size.height;
+        avatarImage.frame = avatarFrame;
     }
 }
 

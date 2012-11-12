@@ -20,6 +20,7 @@
     IBOutlet UILabel *headerLabel;
     IBOutlet UILabel *contentLabel;
     IBOutlet UIImageView *bubbleImage;
+    IBOutlet UIImageView *avatarImage;
 }
 
 @property (nonatomic, strong) NSBubbleDataInternal *dataInternal;
