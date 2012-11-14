@@ -57,7 +57,11 @@
     
     if (!self.bubbleImage)
     {
+#if !__has_feature(objc_arc)
         self.bubbleImage = [[[UIImageView alloc] init] autorelease];
+#else
+        self.bubbleImage = [[UIImageView alloc] init];        
+#endif
         [self addSubview:self.bubbleImage];
     }
     
@@ -73,7 +77,11 @@
     if (self.showAvatar)
     {
         [self.avatarImage removeFromSuperview];
+#if !__has_feature(objc_arc)
         self.avatarImage = [[[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:@"missingAvatar.png"])] autorelease];
+#else
+        self.avatarImage = [[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:@"missingAvatar.png"])];
+#endif
         self.avatarImage.layer.cornerRadius = 9.0;
         self.avatarImage.layer.masksToBounds = YES;
         self.avatarImage.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:0.2].CGColor;
