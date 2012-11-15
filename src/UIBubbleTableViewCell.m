@@ -86,7 +86,7 @@
         else {
             borderX+=2;
         }
-        whiteBorderView.frame = CGRectMake(borderX+self.data.insets.left - self.data.insets.right, self.data.insets.top - self.data.insets.bottom+4, width + self.data.insets.left + self.data.insets.right-8, height + self.data.insets.top + self.data.insets.bottom);
+        whiteBorderView.frame = CGRectMake(borderX+self.data.insets.left - self.data.insets.right, self.data.insets.top - self.data.insets.bottom+4, width + self.data.insets.left + self.data.insets.right-8, height + self.data.insets.top + self.data.insets.bottom-2);
         
         [self.contentView addSubview:whiteBorderView];
     
