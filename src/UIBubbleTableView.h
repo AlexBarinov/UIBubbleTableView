@@ -24,6 +24,7 @@ typedef enum _NSBubbleTypingType
 
 @property (nonatomic, assign) id<UIBubbleTableViewDataSource> bubbleDataSource;
 @property (nonatomic) NSTimeInterval snapInterval;
+@property (nonatomic, strong) UIFont *customFont;
 @property (nonatomic) NSBubbleTypingType typingBubble;
 
 @end
