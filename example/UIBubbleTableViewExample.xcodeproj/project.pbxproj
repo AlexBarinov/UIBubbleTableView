@@ -21,6 +21,7 @@
 		76ED208715BF09E300E186D3 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208615BF09E300E186D3 /* UIBubbleTableView.m */; };
 		76ED208B15BF0BB100E186D3 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208A15BF0BB100E186D3 /* NSBubbleData.m */; };
 		76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */; };
+		9508E66816556D54000C5B04 /* image_frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9508E66716556D54000C5B04 /* image_frame@2x.png */; };
 		C83B107915DE43180067DADE /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = C83B107115DE43180067DADE /* bubbleMine.png */; };
 		C83B107A15DE43180067DADE /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C83B107215DE43180067DADE /* bubbleMine@2x.png */; };
 		C83B107B15DE43180067DADE /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = C83B107315DE43180067DADE /* bubbleSomeone.png */; };
@@ -59,6 +60,7 @@
 		76ED208A15BF0BB100E186D3 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSBubbleData.m; path = ../../src/NSBubbleData.m; sourceTree = "<group>"; };
 		76ED209215BF29EE00E186D3 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableViewCell.h; path = ../../src/UIBubbleTableViewCell.h; sourceTree = "<group>"; };
 		76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTableViewCell.m; path = ../../src/UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		9508E66716556D54000C5B04 /* image_frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_frame@2x.png"; sourceTree = "<group>"; };
 		C83B107115DE43180067DADE /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
 		C83B107215DE43180067DADE /* bubbleMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleMine@2x.png"; sourceTree = "<group>"; };
 		C83B107315DE43180067DADE /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleSomeone.png; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		C83B107015DE43180067DADE /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9508E66716556D54000C5B04 /* image_frame@2x.png */,
 				C83B107115DE43180067DADE /* bubbleMine.png */,
 				C83B107215DE43180067DADE /* bubbleMine@2x.png */,
 				C83B107315DE43180067DADE /* bubbleSomeone.png */,
@@ -238,6 +241,7 @@
 				C83B107F15DE43180067DADE /* typingSomeone.png in Resources */,
 				C83B108015DE43180067DADE /* typingSomeone@2x.png in Resources */,
 				76687AFF162203AF00707588 /* halloween.jpg in Resources */,
+				9508E66816556D54000C5B04 /* image_frame@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

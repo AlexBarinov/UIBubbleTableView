@@ -74,7 +74,19 @@
     
     [self.customView removeFromSuperview];
     self.customView = self.data.view;
+    
+    if ([self.customView isKindOfClass:[UIImageView class]])
+    {
+        UIImage* imageBorderImg = [[UIImage imageNamed:@"image_frame.png"] stretchableImageWithLeftCapWidth:24 topCapHeight:24];
+        UIImageView* whiteBorderView = [[UIImageView alloc] initWithImage:imageBorderImg];
+        whiteBorderView.frame = CGRectMake(x + self.data.insets.left-10, y + self.data.insets.top-10, width+20, height+20);
+        
+        [self.contentView addSubview:whiteBorderView];
+    
+    }
+    
     self.customView.frame = CGRectMake(x + self.data.insets.left, y + self.data.insets.top, width, height);
+
     [self.contentView addSubview:self.customView];
 
     if (type == BubbleTypeSomeoneElse)
