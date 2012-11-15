@@ -50,6 +50,12 @@
     [self addSubview:self.label];
 }
 
-
+-(void)setLabelFont:(UIFont*)customFont withFontColor:(UIColor*)customColor
+{
+    
+    if (customFont != nil) self.label.font = customFont;
+    if (customColor != nil) self.label.textColor = customColor;
+    
+}
 
 @end

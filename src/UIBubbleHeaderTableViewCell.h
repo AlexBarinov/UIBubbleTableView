@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) NSDate *date;
 
+-(void)setLabelFont:(UIFont*)customFont withFontColor:(UIColor*)customColor;
+
 @end

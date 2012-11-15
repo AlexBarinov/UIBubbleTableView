@@ -210,18 +210,7 @@
         
         if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
         cell.date = data.date;
-        if (_customFont != nil)
-        {
-            cell.textLabel.font = _customFont;
-            cell.detailTextLabel.font = _customFont;
-        }
-        
-        
-        if (_customFontColor != nil)
-        {
-            cell.textLabel.textColor = _customFontColor;
-            cell.detailTextLabel.font = _customFont;
-        }
+        [cell setLabelFont:_customFont withFontColor:_customFontColor];
         return cell;
     }
     
