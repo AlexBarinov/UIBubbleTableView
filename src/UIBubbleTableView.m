@@ -26,6 +26,7 @@
 @synthesize bubbleSection = _bubbleSection;
 @synthesize typingBubble = _typingBubble;
 @synthesize customFont = _customFont;
+@synthesize customFontColor = _customFontColor;
 
 #pragma mark - Initializators
 
@@ -209,8 +210,17 @@
         
         if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
         cell.date = data.date;
-        cell.textLabel.font = _customFont;
-        cell.detailTextLabel.font = _customFont;
+        if (_customFont != nil)
+        {
+            cell.textLabel.font = _customFont;
+        }
+        
+        //cell.detailTextLabel.font = _customFont; //FIXME: how about this?
+        
+        if (_customFontColor != nil)
+        {
+            cell.textLabel.textColor = _customFontColor;
+        }
         return cell;
     }
     
