@@ -40,23 +40,33 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 + (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
 {
-#if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithText:text date:date type:type] autorelease];
-#else
-    return [[NSBubbleData alloc] initWithText:text date:date type:type];
-#endif    
+    return [self dataWithText:text date:date type:type withFont:[UIFont systemFontOfSize:[UIFont systemFontSize]]];
 }
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
+
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont
+
 {
-    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    CGSize size = [(text ? text : @"") sizeWithFont:font constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+#if !__has_feature(objc_arc)
+    return [[[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont] autorelease];
+#else
+    return [[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont];
+#endif
+}
+
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont
+{
+    if (customFont == nil) {
+            customFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    }
+    
+    CGSize size = [(text ? text : @"") sizeWithFont:customFont constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     label.numberOfLines = 0;
     label.lineBreakMode = UILineBreakModeWordWrap;
     label.text = (text ? text : @"");
-    label.font = font;
+    label.font = customFont;
     label.backgroundColor = [UIColor clearColor];
     
 #if !__has_feature(objc_arc)
@@ -65,6 +75,13 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     
     UIEdgeInsets insets = (type == BubbleTypeMine ? textInsetsMine : textInsetsSomeone);
     return [self initWithView:label date:date type:type insets:insets];
+    
+}
+
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
+{
+    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    return [self initWithText:text date:date type:type withFont:font];
 }
 
 #pragma mark - Image bubble
