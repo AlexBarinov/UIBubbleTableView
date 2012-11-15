@@ -79,7 +79,14 @@
     {
         UIImage* imageBorderImg = [[UIImage imageNamed:@"image_frame.png"] stretchableImageWithLeftCapWidth:24 topCapHeight:24];
         UIImageView* whiteBorderView = [[UIImageView alloc] initWithImage:imageBorderImg];
-        whiteBorderView.frame = CGRectMake(x+self.data.insets.left - self.data.insets.right, self.data.insets.top - self.data.insets.bottom+4, width + self.data.insets.left + self.data.insets.right, height + self.data.insets.top + self.data.insets.bottom);
+        int borderX = x;
+        if (borderX >0) {
+            borderX+=10;
+        }
+        else {
+            borderX+=2;
+        }
+        whiteBorderView.frame = CGRectMake(borderX+self.data.insets.left - self.data.insets.right, self.data.insets.top - self.data.insets.bottom+4, width + self.data.insets.left + self.data.insets.right-8, height + self.data.insets.top + self.data.insets.bottom);
         
         [self.contentView addSubview:whiteBorderView];
     
