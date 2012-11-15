@@ -213,13 +213,14 @@
         if (_customFont != nil)
         {
             cell.textLabel.font = _customFont;
+            cell.detailTextLabel.font = _customFont;
         }
         
-        //cell.detailTextLabel.font = _customFont; //FIXME: how about this?
         
         if (_customFontColor != nil)
         {
             cell.textLabel.textColor = _customFontColor;
+            cell.detailTextLabel.font = _customFont;
         }
         return cell;
     }

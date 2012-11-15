@@ -40,24 +40,28 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 + (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
 {
-    return [self dataWithText:text date:date type:type withFont:[UIFont systemFontOfSize:[UIFont systemFontSize]]];
+    return [self dataWithText:text date:date type:type withFont:[UIFont systemFontOfSize:[UIFont systemFontSize]] withFontColor:[UIColor grayColor]];
 }
 
 
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor
 
 {
 #if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont] autorelease];
+    return [[[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor] autorelease];
 #else
-    return [[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont];
+    return [[NSBubbleData alloc] initWithText:text date:date type:type withFont:customFont withFontColor:customColor];
 #endif
 }
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type withFont:(UIFont*)customFont withFontColor:(UIColor*)customColor
 {
     if (customFont == nil) {
             customFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    }
+    
+    if (customColor == nil) {
+        customColor = [UIColor grayColor];
     }
     
     CGSize size = [(text ? text : @"") sizeWithFont:customFont constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
@@ -67,6 +71,7 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     label.lineBreakMode = UILineBreakModeWordWrap;
     label.text = (text ? text : @"");
     label.font = customFont;
+    label.textColor = customColor;
     label.backgroundColor = [UIColor clearColor];
     
 #if !__has_feature(objc_arc)
@@ -81,7 +86,7 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 - (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
 {
     UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    return [self initWithText:text date:date type:type withFont:font];
+    return [self initWithText:text date:date type:type withFont:font withFontColor:[UIColor grayColor]];
 }
 
 #pragma mark - Image bubble
