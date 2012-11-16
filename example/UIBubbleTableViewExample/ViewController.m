@@ -19,6 +19,17 @@
 #import "UIBubbleTableViewDataSource.h"
 #import "NSBubbleData.h"
 
+@interface ViewController ()
+{
+    IBOutlet UIBubbleTableView *bubbleTable;
+    IBOutlet UIView *textInputView;
+    IBOutlet UITextField *textField;
+
+    NSMutableArray *bubbleData;
+}
+
+@end
+
 @implementation ViewController
 
 - (void)viewDidLoad
@@ -31,7 +42,7 @@
     NSBubbleData *photoBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
     photoBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
     
-    NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+    NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
     replyBubble.avatar = nil;
     
     bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, photoBubble, replyBubble, nil];
@@ -57,11 +68,11 @@
     bubbleTable.typingBubble = NSBubbleTypingTypeSomebody;
     
     [bubbleTable reloadData];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
+    
+    // Keyboard events
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -79,6 +90,56 @@
 - (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row
 {
     return [bubbleData objectAtIndex:row];
+}
+
+#pragma mark - Keyboard events
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        CGRect frame = textInputView.frame;
+        frame.origin.y -= kbSize.height;
+        textInputView.frame = frame;
+        
+        frame = bubbleTable.frame;
+        frame.size.height -= kbSize.height;
+        bubbleTable.frame = frame;
+    }];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        CGRect frame = textInputView.frame;
+        frame.origin.y += kbSize.height;
+        textInputView.frame = frame;
+        
+        frame = bubbleTable.frame;
+        frame.size.height += kbSize.height;
+        bubbleTable.frame = frame;
+    }];
+}
+
+#pragma mark - Actions
+
+- (IBAction)sayPressed:(id)sender
+{
+    bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
+
+    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+    [bubbleData addObject:sayBubble];
+    [bubbleTable reloadData];
+    
+    textField.text = @"";
+    [textField resignFirstResponder];
 }
 
 @end
