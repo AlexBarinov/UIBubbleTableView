@@ -28,6 +28,7 @@
 @synthesize customView = _customView;
 @synthesize bubbleImage = _bubbleImage;
 @synthesize showAvatar = _showAvatar;
+@synthesize avatarImage = _avatarImage;
 
 - (void)setFrame:(CGRect)frame
 {
@@ -41,6 +42,7 @@
     self.data = nil;
     self.customView = nil;
     self.bubbleImage = nil;
+    self.avatarImage = nil;
     [super dealloc];
 }
 #endif
