@@ -64,11 +64,11 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
         customColor = [UIColor grayColor];
     }
     
-    CGSize size = [(text ? text : @"") sizeWithFont:customFont constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [(text ? text : @"") sizeWithFont:customFont constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     label.numberOfLines = 0;
-    label.lineBreakMode = UILineBreakModeWordWrap;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
     label.text = (text ? text : @"");
     label.font = customFont;
     label.textColor = customColor;
