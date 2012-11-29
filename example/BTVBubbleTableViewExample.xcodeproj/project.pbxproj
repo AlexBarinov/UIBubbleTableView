@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		76687AFD1622039C00707588 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */; };
+		76687AFD1622039C00707588 /* BTVBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76687AFC1622039C00707588 /* BTVBubbleTypingTableViewCell.m */; };
 		76687AFF162203AF00707588 /* halloween.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76687AFE162203AF00707588 /* halloween.jpg */; };
-		76D097CC1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */; };
+		76D097CC1621F0E000C17816 /* BTVBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D097CB1621F0E000C17816 /* BTVBubbleHeaderTableViewCell.m */; };
 		76ED206315BF096C00E186D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206215BF096C00E186D3 /* UIKit.framework */; };
 		76ED206515BF096C00E186D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206415BF096C00E186D3 /* Foundation.framework */; };
 		76ED206715BF096C00E186D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ED206615BF096C00E186D3 /* CoreGraphics.framework */; };
@@ -18,9 +18,9 @@
 		76ED207315BF096C00E186D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED207215BF096C00E186D3 /* AppDelegate.m */; };
 		76ED207615BF096C00E186D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED207515BF096C00E186D3 /* ViewController.m */; };
 		76ED207915BF096C00E186D3 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76ED207715BF096C00E186D3 /* ViewController.xib */; };
-		76ED208715BF09E300E186D3 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208615BF09E300E186D3 /* UIBubbleTableView.m */; };
-		76ED208B15BF0BB100E186D3 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208A15BF0BB100E186D3 /* NSBubbleData.m */; };
-		76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */; };
+		76ED208715BF09E300E186D3 /* BTVBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208615BF09E300E186D3 /* BTVBubbleTableView.m */; };
+		76ED208B15BF0BB100E186D3 /* BTVBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208A15BF0BB100E186D3 /* BTVBubbleData.m */; };
+		76ED209415BF29EE00E186D3 /* BTVBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209315BF29EE00E186D3 /* BTVBubbleTableViewCell.m */; };
 		C836D5CA1625CBA5004CB4A9 /* missingAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = C836D5C81625CBA5004CB4A9 /* missingAvatar.png */; };
 		C836D5CB1625CBA5004CB4A9 /* missingAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C836D5C91625CBA5004CB4A9 /* missingAvatar@2x.png */; };
 		C836D5CE1625D718004CB4A9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = C836D5CD1625D718004CB4A9 /* avatar1.png */; };
@@ -37,31 +37,31 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		76687AFB1622039C00707588 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTypingTableViewCell.h; path = ../../src/UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
-		76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTypingTableViewCell.m; path = ../../src/UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
+		76687AFB1622039C00707588 /* BTVBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTVBubbleTypingTableViewCell.h; path = ../../src/BTVBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
+		76687AFC1622039C00707588 /* BTVBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTVBubbleTypingTableViewCell.m; path = ../../src/BTVBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		76687AFE162203AF00707588 /* halloween.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = halloween.jpg; sourceTree = SOURCE_ROOT; };
-		76D097CA1621F0E000C17816 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleHeaderTableViewCell.h; path = ../../src/UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
-		76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleHeaderTableViewCell.m; path = ../../src/UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
-		76ED205E15BF096C00E186D3 /* UIBubbleTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIBubbleTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76D097CA1621F0E000C17816 /* BTVBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTVBubbleHeaderTableViewCell.h; path = ../../src/BTVBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
+		76D097CB1621F0E000C17816 /* BTVBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTVBubbleHeaderTableViewCell.m; path = ../../src/BTVBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
+		76ED205E15BF096C00E186D3 /* BTVBubbleTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTVBubbleTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED206215BF096C00E186D3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		76ED206415BF096C00E186D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		76ED206615BF096C00E186D3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		76ED206A15BF096C00E186D3 /* UIBubbleTableViewExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIBubbleTableViewExample-Info.plist"; sourceTree = "<group>"; };
+		76ED206A15BF096C00E186D3 /* BTVBubbleTableViewExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BTVBubbleTableViewExample-Info.plist"; sourceTree = "<group>"; };
 		76ED206C15BF096C00E186D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		76ED206E15BF096C00E186D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		76ED207015BF096C00E186D3 /* UIBubbleTableViewExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBubbleTableViewExample-Prefix.pch"; sourceTree = "<group>"; };
+		76ED207015BF096C00E186D3 /* BTVBubbleTableViewExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BTVBubbleTableViewExample-Prefix.pch"; sourceTree = "<group>"; };
 		76ED207115BF096C00E186D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		76ED207215BF096C00E186D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		76ED207415BF096C00E186D3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		76ED207515BF096C00E186D3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		76ED207815BF096C00E186D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		76ED208515BF09E300E186D3 /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableView.h; path = ../../src/UIBubbleTableView.h; sourceTree = "<group>"; };
-		76ED208615BF09E300E186D3 /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTableView.m; path = ../../src/UIBubbleTableView.m; sourceTree = "<group>"; };
-		76ED208815BF0B4400E186D3 /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableViewDataSource.h; path = ../../src/UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
-		76ED208915BF0BB100E186D3 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSBubbleData.h; path = ../../src/NSBubbleData.h; sourceTree = "<group>"; };
-		76ED208A15BF0BB100E186D3 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSBubbleData.m; path = ../../src/NSBubbleData.m; sourceTree = "<group>"; };
-		76ED209215BF29EE00E186D3 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableViewCell.h; path = ../../src/UIBubbleTableViewCell.h; sourceTree = "<group>"; };
-		76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTableViewCell.m; path = ../../src/UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		76ED208515BF09E300E186D3 /* BTVBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTVBubbleTableView.h; path = ../../src/BTVBubbleTableView.h; sourceTree = "<group>"; };
+		76ED208615BF09E300E186D3 /* BTVBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTVBubbleTableView.m; path = ../../src/BTVBubbleTableView.m; sourceTree = "<group>"; };
+		76ED208815BF0B4400E186D3 /* BTVBubbleTableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BTVBubbleTableViewDataSource.h; path = ../../src/BTVBubbleTableViewDataSource.h; sourceTree = "<group>"; };
+		76ED208915BF0BB100E186D3 /* BTVBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTVBubbleData.h; path = ../../src/BTVBubbleData.h; sourceTree = "<group>"; };
+		76ED208A15BF0BB100E186D3 /* BTVBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTVBubbleData.m; path = ../../src/BTVBubbleData.m; sourceTree = "<group>"; };
+		76ED209215BF29EE00E186D3 /* BTVBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BTVBubbleTableViewCell.h; path = ../../src/BTVBubbleTableViewCell.h; sourceTree = "<group>"; };
+		76ED209315BF29EE00E186D3 /* BTVBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BTVBubbleTableViewCell.m; path = ../../src/BTVBubbleTableViewCell.m; sourceTree = "<group>"; };
 		C836D5C81625CBA5004CB4A9 /* missingAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missingAvatar.png; sourceTree = "<group>"; };
 		C836D5C91625CBA5004CB4A9 /* missingAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missingAvatar@2x.png"; sourceTree = "<group>"; };
 		C836D5CD1625D718004CB4A9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = SOURCE_ROOT; };
@@ -94,7 +94,7 @@
 		76ED205315BF096C00E186D3 = {
 			isa = PBXGroup;
 			children = (
-				76ED206815BF096C00E186D3 /* UIBubbleTableViewExample */,
+				76ED206815BF096C00E186D3 /* BTVBubbleTableViewExample */,
 				76ED206115BF096C00E186D3 /* Frameworks */,
 				76ED205F15BF096C00E186D3 /* Products */,
 			);
@@ -103,7 +103,7 @@
 		76ED205F15BF096C00E186D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76ED205E15BF096C00E186D3 /* UIBubbleTableViewExample.app */,
+				76ED205E15BF096C00E186D3 /* BTVBubbleTableViewExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		76ED206815BF096C00E186D3 /* UIBubbleTableViewExample */ = {
+		76ED206815BF096C00E186D3 /* BTVBubbleTableViewExample */ = {
 			isa = PBXGroup;
 			children = (
 				C83B107015DE43180067DADE /* images */,
@@ -130,6 +130,7 @@
 				76ED207715BF096C00E186D3 /* ViewController.xib */,
 				76ED206915BF096C00E186D3 /* Supporting Files */,
 			);
+			name = BTVBubbleTableViewExample;
 			path = UIBubbleTableViewExample;
 			sourceTree = "<group>";
 		};
@@ -140,10 +141,10 @@
 				76687AFE162203AF00707588 /* halloween.jpg */,
 				C86D4FFD15BFEBC1003F161E /* icon_114.png */,
 				C86D4FFB15BFEBBF003F161E /* icon_57.png */,
-				76ED206A15BF096C00E186D3 /* UIBubbleTableViewExample-Info.plist */,
+				76ED206A15BF096C00E186D3 /* BTVBubbleTableViewExample-Info.plist */,
 				76ED206B15BF096C00E186D3 /* InfoPlist.strings */,
 				76ED206E15BF096C00E186D3 /* main.m */,
-				76ED207015BF096C00E186D3 /* UIBubbleTableViewExample-Prefix.pch */,
+				76ED207015BF096C00E186D3 /* BTVBubbleTableViewExample-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -151,17 +152,17 @@
 		76ED208315BF09AD00E186D3 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				76ED208915BF0BB100E186D3 /* NSBubbleData.h */,
-				76ED208A15BF0BB100E186D3 /* NSBubbleData.m */,
-				76ED208515BF09E300E186D3 /* UIBubbleTableView.h */,
-				76ED208615BF09E300E186D3 /* UIBubbleTableView.m */,
-				76ED209215BF29EE00E186D3 /* UIBubbleTableViewCell.h */,
-				76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */,
-				76D097CA1621F0E000C17816 /* UIBubbleHeaderTableViewCell.h */,
-				76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */,
-				76687AFB1622039C00707588 /* UIBubbleTypingTableViewCell.h */,
-				76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */,
-				76ED208815BF0B4400E186D3 /* UIBubbleTableViewDataSource.h */,
+				76ED208915BF0BB100E186D3 /* BTVBubbleData.h */,
+				76ED208A15BF0BB100E186D3 /* BTVBubbleData.m */,
+				76ED208515BF09E300E186D3 /* BTVBubbleTableView.h */,
+				76ED208615BF09E300E186D3 /* BTVBubbleTableView.m */,
+				76ED209215BF29EE00E186D3 /* BTVBubbleTableViewCell.h */,
+				76ED209315BF29EE00E186D3 /* BTVBubbleTableViewCell.m */,
+				76D097CA1621F0E000C17816 /* BTVBubbleHeaderTableViewCell.h */,
+				76D097CB1621F0E000C17816 /* BTVBubbleHeaderTableViewCell.m */,
+				76687AFB1622039C00707588 /* BTVBubbleTypingTableViewCell.h */,
+				76687AFC1622039C00707588 /* BTVBubbleTypingTableViewCell.m */,
+				76ED208815BF0B4400E186D3 /* BTVBubbleTableViewDataSource.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -187,9 +188,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76ED205D15BF096C00E186D3 /* UIBubbleTableViewExample */ = {
+		76ED205D15BF096C00E186D3 /* BTVBubbleTableViewExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76ED207C15BF096C00E186D3 /* Build configuration list for PBXNativeTarget "UIBubbleTableViewExample" */;
+			buildConfigurationList = 76ED207C15BF096C00E186D3 /* Build configuration list for PBXNativeTarget "BTVBubbleTableViewExample" */;
 			buildPhases = (
 				76ED205A15BF096C00E186D3 /* Sources */,
 				76ED205B15BF096C00E186D3 /* Frameworks */,
@@ -199,9 +200,9 @@
 			);
 			dependencies = (
 			);
-			name = UIBubbleTableViewExample;
+			name = BTVBubbleTableViewExample;
 			productName = UIBubbleTableViewExample;
-			productReference = 76ED205E15BF096C00E186D3 /* UIBubbleTableViewExample.app */;
+			productReference = 76ED205E15BF096C00E186D3 /* BTVBubbleTableViewExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -212,7 +213,7 @@
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = 76ED205815BF096C00E186D3 /* Build configuration list for PBXProject "UIBubbleTableViewExample" */;
+			buildConfigurationList = 76ED205815BF096C00E186D3 /* Build configuration list for PBXProject "BTVBubbleTableViewExample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -224,7 +225,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				76ED205D15BF096C00E186D3 /* UIBubbleTableViewExample */,
+				76ED205D15BF096C00E186D3 /* BTVBubbleTableViewExample */,
 			);
 		};
 /* End PBXProject section */
@@ -263,11 +264,11 @@
 				76ED206F15BF096C00E186D3 /* main.m in Sources */,
 				76ED207315BF096C00E186D3 /* AppDelegate.m in Sources */,
 				76ED207615BF096C00E186D3 /* ViewController.m in Sources */,
-				76ED208715BF09E300E186D3 /* UIBubbleTableView.m in Sources */,
-				76ED208B15BF0BB100E186D3 /* NSBubbleData.m in Sources */,
-				76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */,
-				76D097CC1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m in Sources */,
-				76687AFD1622039C00707588 /* UIBubbleTypingTableViewCell.m in Sources */,
+				76ED208715BF09E300E186D3 /* BTVBubbleTableView.m in Sources */,
+				76ED208B15BF0BB100E186D3 /* BTVBubbleData.m in Sources */,
+				76ED209415BF29EE00E186D3 /* BTVBubbleTableViewCell.m in Sources */,
+				76D097CC1621F0E000C17816 /* BTVBubbleHeaderTableViewCell.m in Sources */,
+				76687AFD1622039C00707588 /* BTVBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,9 +341,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UIBubbleTableViewExample/UIBubbleTableViewExample-Prefix.pch";
-				INFOPLIST_FILE = "UIBubbleTableViewExample/UIBubbleTableViewExample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "UIBubbleTableViewExample/BTVBubbleTableViewExample-Prefix.pch";
+				INFOPLIST_FILE = "UIBubbleTableViewExample/BTVBubbleTableViewExample-Info.plist";
+				PRODUCT_NAME = BTVBubbleTableViewExample;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -351,9 +352,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UIBubbleTableViewExample/UIBubbleTableViewExample-Prefix.pch";
-				INFOPLIST_FILE = "UIBubbleTableViewExample/UIBubbleTableViewExample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "UIBubbleTableViewExample/BTVBubbleTableViewExample-Prefix.pch";
+				INFOPLIST_FILE = "UIBubbleTableViewExample/BTVBubbleTableViewExample-Info.plist";
+				PRODUCT_NAME = BTVBubbleTableViewExample;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -361,7 +362,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76ED205815BF096C00E186D3 /* Build configuration list for PBXProject "UIBubbleTableViewExample" */ = {
+		76ED205815BF096C00E186D3 /* Build configuration list for PBXProject "BTVBubbleTableViewExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76ED207A15BF096C00E186D3 /* Debug */,
@@ -370,7 +371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76ED207C15BF096C00E186D3 /* Build configuration list for PBXNativeTarget "UIBubbleTableViewExample" */ = {
+		76ED207C15BF096C00E186D3 /* Build configuration list for PBXNativeTarget "BTVBubbleTableViewExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76ED207D15BF096C00E186D3 /* Debug */,

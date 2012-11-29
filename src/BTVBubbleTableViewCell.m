@@ -9,10 +9,10 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "UIBubbleTableViewCell.h"
-#import "NSBubbleData.h"
+#import "BTVBubbleTableViewCell.h"
+#import "BTVBubbleData.h"
 
-@interface UIBubbleTableViewCell ()
+@interface BTVBubbleTableViewCell ()
 
 @property (nonatomic, retain) UIView *customView;
 @property (nonatomic, retain) UIImageView *bubbleImage;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation UIBubbleTableViewCell
+@implementation BTVBubbleTableViewCell
 
 @synthesize data = _data;
 @synthesize customView = _customView;
@@ -47,7 +47,7 @@
 }
 #endif
 
-- (void)setDataInternal:(NSBubbleData *)value
+- (void)setDataInternal:(BTVBubbleData *)value
 {
 	self.data = value;
 	[self setupInternalData];
@@ -67,7 +67,7 @@
         [self addSubview:self.bubbleImage];
     }
     
-    NSBubbleType type = self.data.type;
+    BTVBubbleType type = self.data.type;
     
     CGFloat width = self.data.view.frame.size.width;
     CGFloat height = self.data.view.frame.size.height;

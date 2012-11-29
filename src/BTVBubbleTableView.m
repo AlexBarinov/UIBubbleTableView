@@ -8,18 +8,18 @@
 //  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/
 //
 
-#import "UIBubbleTableView.h"
-#import "NSBubbleData.h"
-#import "UIBubbleHeaderTableViewCell.h"
-#import "UIBubbleTypingTableViewCell.h"
+#import "BTVBubbleTableView.h"
+#import "BTVBubbleData.h"
+#import "BTVBubbleHeaderTableViewCell.h"
+#import "BTVBubbleTypingTableViewCell.h"
 
-@interface UIBubbleTableView ()
+@interface BTVBubbleTableView ()
 
 @property (nonatomic, retain) NSMutableArray *bubbleSection;
 
 @end
 
-@implementation UIBubbleTableView
+@implementation BTVBubbleTableView
 
 @synthesize bubbleDataSource = _bubbleDataSource;
 @synthesize snapInterval = _snapInterval;
@@ -113,14 +113,14 @@
         for (int i = 0; i < count; i++)
         {
             NSObject *object = [self.bubbleDataSource bubbleTableView:self dataForRow:i];
-            assert([object isKindOfClass:[NSBubbleData class]]);
+            assert([object isKindOfClass:[BTVBubbleData class]]);
             [bubbleData addObject:object];
         }
         
         [bubbleData sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
          {
-             NSBubbleData *bubbleData1 = (NSBubbleData *)obj1;
-             NSBubbleData *bubbleData2 = (NSBubbleData *)obj2;
+             BTVBubbleData *bubbleData1 = (BTVBubbleData *)obj1;
+             BTVBubbleData *bubbleData2 = (BTVBubbleData *)obj2;
              
              return [bubbleData1.date compare:bubbleData2.date];            
          }];
@@ -130,7 +130,7 @@
         
         for (int i = 0; i < count; i++)
         {
-            NSBubbleData *data = (NSBubbleData *)[bubbleData objectAtIndex:i];
+            BTVBubbleData *data = (BTVBubbleData *)[bubbleData objectAtIndex:i];
             
             if ([data.date timeIntervalSinceDate:last] > self.snapInterval)
             {
@@ -174,16 +174,16 @@
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        return MAX([UIBubbleTypingTableViewCell height], self.showAvatars ? 52 : 0);
+        return MAX([BTVBubbleTypingTableViewCell height], self.showAvatars ? 52 : 0);
     }
     
     // Header
     if (indexPath.row == 0)
     {
-        return [UIBubbleHeaderTableViewCell height];
+        return [BTVBubbleHeaderTableViewCell height];
     }
     
-    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    BTVBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
 }
 
@@ -193,9 +193,9 @@
 	if (indexPath.section >= [self.bubbleSection count])
     {
         static NSString *cellId = @"tblBubbleTypingCell";
-        UIBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        BTVBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         
-        if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
+        if (cell == nil) cell = [[BTVBubbleTypingTableViewCell alloc] init];
 
         cell.type = self.typingBubble;
         cell.showAvatar = self.showAvatars;
@@ -207,10 +207,10 @@
     if (indexPath.row == 0)
     {
         static NSString *cellId = @"tblBubbleHeaderCell";
-        UIBubbleHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
+        BTVBubbleHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        BTVBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
-        if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
+        if (cell == nil) cell = [[BTVBubbleHeaderTableViewCell alloc] init];
 
         cell.date = data.date;
        
@@ -219,10 +219,10 @@
     
     // Standard bubble    
     static NSString *cellId = @"tblBubbleCell";
-    UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    BTVBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    BTVBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     
-    if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
+    if (cell == nil) cell = [[BTVBubbleTableViewCell alloc] init];
     
     cell.data = data;
     cell.showAvatar = self.showAvatars;

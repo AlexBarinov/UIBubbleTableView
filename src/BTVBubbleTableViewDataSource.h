@@ -10,15 +10,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class NSBubbleData;
-@class UIBubbleTableView;
-@protocol UIBubbleTableViewDataSource <NSObject>
+@class BTVBubbleData;
+@class BTVBubbleTableView;
+@protocol BTVBubbleTableViewDataSource <NSObject>
 
 @optional
 
 @required
 
-- (NSInteger)numberOfRowsForBubbleTable:(UIBubbleTableView *)tableView;
-- (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row;
+- (NSInteger)numberOfRowsForBubbleTable:(BTVBubbleTableView *)tableView;
+- (BTVBubbleData *)bubbleTableView:(BTVBubbleTableView *)tableView dataForRow:(NSInteger)row;
 
 @end

@@ -10,21 +10,21 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UIBubbleTableViewDataSource.h"
-#import "UIBubbleTableViewCell.h"
+#import "BTVBubbleTableViewDataSource.h"
+#import "BTVBubbleTableViewCell.h"
 
-typedef enum _NSBubbleTypingType
+typedef enum _BTVBubbleTypingType
 {
     NSBubbleTypingTypeNobody = 0,
     NSBubbleTypingTypeMe = 1,
     NSBubbleTypingTypeSomebody = 2
-} NSBubbleTypingType;
+} BTVBubbleTypingType;
 
-@interface UIBubbleTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+@interface BTVBubbleTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, assign) IBOutlet id<UIBubbleTableViewDataSource> bubbleDataSource;
+@property (nonatomic, assign) IBOutlet id<BTVBubbleTableViewDataSource> bubbleDataSource;
 @property (nonatomic) NSTimeInterval snapInterval;
-@property (nonatomic) NSBubbleTypingType typingBubble;
+@property (nonatomic) BTVBubbleTypingType typingBubble;
 @property (nonatomic) BOOL showAvatars;
 
 @end

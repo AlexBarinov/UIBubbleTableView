@@ -9,8 +9,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIBubbleTableViewDataSource.h"
+#import "BTVBubbleTableViewDataSource.h"
 
-@interface ViewController : UIViewController <UIBubbleTableViewDataSource>
+@interface ViewController : UIViewController <BTVBubbleTableViewDataSource>
 
 @end

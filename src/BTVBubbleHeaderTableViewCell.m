@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Stex Group. All rights reserved.
 //
 
-#import "UIBubbleHeaderTableViewCell.h"
+#import "BTVBubbleHeaderTableViewCell.h"
 
-@interface UIBubbleHeaderTableViewCell ()
+@interface BTVBubbleHeaderTableViewCell ()
 
 @property (nonatomic, retain) UILabel *label;
 
 @end
 
-@implementation UIBubbleHeaderTableViewCell
+@implementation BTVBubbleHeaderTableViewCell
 
 @synthesize label = _label;
 @synthesize date = _date;
@@ -39,7 +39,7 @@
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [UIBubbleHeaderTableViewCell height])];
+    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [BTVBubbleHeaderTableViewCell height])];
     self.label.text = text;
     self.label.font = [UIFont boldSystemFontOfSize:12];
     self.label.textAlignment = UITextAlignmentCenter;

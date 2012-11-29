@@ -1,5 +1,5 @@
 //
-//  UIBubbleTypingTableCell.h
+//  UIBubbleHeaderTableViewCell.h
 //  UIBubbleTableViewExample
 //
 //  Created by Александр Баринов on 10/7/12.
@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIBubbleTableView.h"
 
-
-@interface UIBubbleTypingTableViewCell : UITableViewCell
+@interface BTVBubbleHeaderTableViewCell : UITableViewCell
 
 + (CGFloat)height;
 
-@property (nonatomic) NSBubbleTypingType type;
-@property (nonatomic) BOOL showAvatar;
+@property (nonatomic, strong) NSDate *date;
 
 @end
