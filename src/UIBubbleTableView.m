@@ -102,7 +102,7 @@
     self.bubbleSection = [[NSMutableArray alloc] init];
 #endif
     
-    if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
+    if (self.bubbleDataSource && (count = [self.bubbleDataSource numberOfRowsForBubbleTable:self]) > 0)
     {
 #if !__has_feature(objc_arc)
         NSMutableArray *bubbleData = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
