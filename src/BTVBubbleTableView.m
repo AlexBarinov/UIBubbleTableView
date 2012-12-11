@@ -148,6 +148,20 @@
     }
     
     [super reloadData];
+    
+    if(self.scrollOnActivity)
+    {
+        [self scrollToBottomAnimated:YES];
+    }
+}
+
+-(void)scrollToBottomAnimated:(BOOL)animated;
+{
+    NSInteger sectionCount = [self numberOfSections];
+    NSInteger rowCount = [self numberOfRowsInSection:sectionCount - 1];
+    
+    NSIndexPath* scrollTo = [NSIndexPath indexPathForRow:rowCount-1 inSection:sectionCount - 1];
+    [self scrollToRowAtIndexPath:scrollTo atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
 #pragma mark - UITableViewDelegate implementation
