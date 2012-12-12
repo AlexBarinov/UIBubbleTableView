@@ -21,6 +21,8 @@
 		76ED208715BF09E300E186D3 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208615BF09E300E186D3 /* UIBubbleTableView.m */; };
 		76ED208B15BF0BB100E186D3 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED208A15BF0BB100E186D3 /* NSBubbleData.m */; };
 		76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */; };
+		8AC51A4A167850E90070A174 /* symbol-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC51A49167850E90070A174 /* symbol-error.png */; };
+		8AC51A4F1678539F0070A174 /* CheckMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC51A4E1678539F0070A174 /* CheckMark.png */; };
 		C836D5CA1625CBA5004CB4A9 /* missingAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = C836D5C81625CBA5004CB4A9 /* missingAvatar.png */; };
 		C836D5CB1625CBA5004CB4A9 /* missingAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C836D5C91625CBA5004CB4A9 /* missingAvatar@2x.png */; };
 		C836D5CE1625D718004CB4A9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = C836D5CD1625D718004CB4A9 /* avatar1.png */; };
@@ -62,6 +64,8 @@
 		76ED208A15BF0BB100E186D3 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSBubbleData.m; path = ../../src/NSBubbleData.m; sourceTree = "<group>"; };
 		76ED209215BF29EE00E186D3 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTableViewCell.h; path = ../../src/UIBubbleTableViewCell.h; sourceTree = "<group>"; };
 		76ED209315BF29EE00E186D3 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTableViewCell.m; path = ../../src/UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		8AC51A49167850E90070A174 /* symbol-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "symbol-error.png"; sourceTree = "<group>"; };
+		8AC51A4E1678539F0070A174 /* CheckMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckMark.png; sourceTree = "<group>"; };
 		C836D5C81625CBA5004CB4A9 /* missingAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missingAvatar.png; sourceTree = "<group>"; };
 		C836D5C91625CBA5004CB4A9 /* missingAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missingAvatar@2x.png"; sourceTree = "<group>"; };
 		C836D5CD1625D718004CB4A9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = SOURCE_ROOT; };
@@ -136,6 +140,8 @@
 		76ED206915BF096C00E186D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8AC51A4E1678539F0070A174 /* CheckMark.png */,
+				8AC51A49167850E90070A174 /* symbol-error.png */,
 				C836D5CD1625D718004CB4A9 /* avatar1.png */,
 				76687AFE162203AF00707588 /* halloween.jpg */,
 				C86D4FFD15BFEBC1003F161E /* icon_114.png */,
@@ -250,6 +256,8 @@
 				C836D5CA1625CBA5004CB4A9 /* missingAvatar.png in Resources */,
 				C836D5CB1625CBA5004CB4A9 /* missingAvatar@2x.png in Resources */,
 				C836D5CE1625D718004CB4A9 /* avatar1.png in Resources */,
+				8AC51A4A167850E90070A174 /* symbol-error.png in Resources */,
+				8AC51A4F1678539F0070A174 /* CheckMark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

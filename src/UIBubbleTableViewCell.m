@@ -17,6 +17,7 @@
 @property (nonatomic, retain) UIView *customView;
 @property (nonatomic, retain) UIImageView *bubbleImage;
 @property (nonatomic, retain) UIImageView *avatarImage;
+@property (nonatomic, retain) UIView *statusImage;
 
 - (void) setupInternalData;
 
@@ -29,6 +30,7 @@
 @synthesize bubbleImage = _bubbleImage;
 @synthesize showAvatar = _showAvatar;
 @synthesize avatarImage = _avatarImage;
+@synthesize statusImage = _statusImage;
 
 - (void)setFrame:(CGRect)frame
 {
@@ -106,6 +108,11 @@
     self.customView = self.data.view;
     self.customView.frame = CGRectMake(x + self.data.insets.left, y + self.data.insets.top, width, height);
     [self.contentView addSubview:self.customView];
+    
+    [self.statusImage removeFromSuperview];
+    self.statusImage = self.data.statusView;
+    self.statusImage.frame = CGRectMake(self.customView.frame.origin.x - 30.0f, self.customView.frame.origin.y, 20.0f, 20.0f);
+    [self.contentView addSubview:self.statusImage];
 
     if (type == BubbleTypeSomeoneElse)
     {

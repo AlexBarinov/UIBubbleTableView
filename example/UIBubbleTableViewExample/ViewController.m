@@ -45,7 +45,16 @@
     NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
     replyBubble.avatar = nil;
     
-    bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, photoBubble, replyBubble, nil];
+    NSBubbleData *msgSending = [NSBubbleData dataWithText:@"Message is sending..." date:[NSDate dateWithTimeIntervalSinceNow:-4] type:BubbleTypeMine msgStatus:BubbleStatusSending];
+    msgSending.avatar = nil;
+    
+    NSBubbleData *msgSucceed = [NSBubbleData dataWithText:@"Message has been sent!" date:[NSDate dateWithTimeIntervalSinceNow:-4] type:BubbleTypeMine msgStatus:BubbleStatusSucceeded];
+    msgSucceed.avatar = nil;
+    
+    NSBubbleData *msgFailed = [NSBubbleData dataWithText:@"Message send failed!" date:[NSDate dateWithTimeIntervalSinceNow:-4] type:BubbleTypeMine msgStatus:BubbleStatusFailed];
+    msgFailed.avatar = nil;
+    
+    bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, photoBubble, replyBubble, msgSending, msgSucceed, msgFailed, nil];
     bubbleTable.bubbleDataSource = self;
     
     // The line below sets the snap interval in seconds. This defines how the bubbles will be grouped in time.
