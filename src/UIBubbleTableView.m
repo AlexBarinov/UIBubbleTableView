@@ -149,6 +149,12 @@
     }
     
     [super reloadData];
+	
+    if(self.scrollOnActivity)
+    {
+	[self scrollToBottomAnimated:NO];
+    }
+
 }
 
 #pragma mark - UITableViewDelegate implementation
@@ -229,6 +235,16 @@
 {
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     [self.bubbleDataSource didSelectNSBubbleDataCell:data];
+}
+
+
+-(void)scrollToBottomAnimated:(BOOL)animated;
+{
+    NSInteger sectionCount = [self numberOfSections];
+    NSInteger rowCount = [self numberOfRowsInSection:sectionCount - 1];
+    
+    NSIndexPath* scrollTo = [NSIndexPath indexPathForRow:rowCount-1 inSection:sectionCount - 1];
+    [self scrollToRowAtIndexPath:scrollTo atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
 
