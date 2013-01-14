@@ -8,10 +8,10 @@
 //  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/
 //
 
-#import "NSBubbleData.h"
+#import "BTVBubbleData.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation NSBubbleData
+@implementation BTVBubbleData
 
 #pragma mark - Properties
 
@@ -42,23 +42,23 @@
 const UIEdgeInsets textInsetsMine = {5, 10, 11, 17};
 const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
-+ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(BTVBubbleType)type
 {
 #if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithText:text date:date type:type] autorelease];
+    return [[[BTVBubbleData alloc] initWithText:text date:date type:type] autorelease];
 #else
     return [[NSBubbleData alloc] initWithText:text date:date type:type];
 #endif    
 }
 
-- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(BTVBubbleType)type
 {
     UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    CGSize size = [(text ? text : @"") sizeWithFont:font constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize size = [(text ? text : @"") sizeWithFont:font constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     label.numberOfLines = 0;
-    label.lineBreakMode = UILineBreakModeWordWrap;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
     label.text = (text ? text : @"");
     label.font = font;
     label.backgroundColor = [UIColor clearColor];
@@ -76,16 +76,16 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 const UIEdgeInsets imageInsetsMine = {11, 13, 16, 22};
 const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 
-+ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type
++ (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(BTVBubbleType)type
 {
 #if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithImage:image date:date type:type] autorelease];
+    return [[[BTVBubbleData alloc] initWithImage:image date:date type:type] autorelease];
 #else
     return [[NSBubbleData alloc] initWithImage:image date:date type:type];
 #endif    
 }
 
-- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type
+- (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(BTVBubbleType)type
 {
     CGSize size = image.size;
     if (size.width > 220)
@@ -110,16 +110,16 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 
 #pragma mark - Custom view bubble
 
-+ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets
++ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(BTVBubbleType)type insets:(UIEdgeInsets)insets
 {
 #if !__has_feature(objc_arc)
-    return [[[NSBubbleData alloc] initWithView:view date:date type:type insets:insets] autorelease];
+    return [[[BTVBubbleData alloc] initWithView:view date:date type:type insets:insets] autorelease];
 #else
     return [[NSBubbleData alloc] initWithView:view date:date type:type insets:insets];
 #endif    
 }
 
-- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets  
+- (id)initWithView:(UIView *)view date:(NSDate *)date type:(BTVBubbleType)type insets:(UIEdgeInsets)insets  
 {
     self = [super init];
     if (self)

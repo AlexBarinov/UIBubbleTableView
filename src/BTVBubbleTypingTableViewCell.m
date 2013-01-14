@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 Stex Group. All rights reserved.
 //
 
-#import "UIBubbleTypingTableViewCell.h"
+#import "BTVBubbleTypingTableViewCell.h"
 
-@interface UIBubbleTypingTableViewCell ()
+@interface BTVBubbleTypingTableViewCell ()
 
 @property (nonatomic, retain) UIImageView *typingImageView;
 
 @end
 
-@implementation UIBubbleTypingTableViewCell
+@implementation BTVBubbleTypingTableViewCell
 
 @synthesize type = _type;
 @synthesize typingImageView = _typingImageView;
@@ -25,11 +25,11 @@
     return 40.0;
 }
 
-- (void)setType:(NSBubbleTypingType)value
+- (void)setType:(BTVBubbleTypingType)value
 {
     if (!self.typingImageView)
     {
-        self.typingImageView = [[UIImageView alloc] init];
+        self.typingImageView = [[[UIImageView alloc] init] autorelease];
         [self addSubview:self.typingImageView];
     }
     

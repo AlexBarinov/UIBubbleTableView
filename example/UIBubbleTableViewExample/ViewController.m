@@ -15,13 +15,13 @@
 //
 
 #import "ViewController.h"
-#import "UIBubbleTableView.h"
-#import "UIBubbleTableViewDataSource.h"
-#import "NSBubbleData.h"
+#import "BTVBubbleTableView.h"
+#import "BTVBubbleTableViewDataSource.h"
+#import "BTVBubbleData.h"
 
 @interface ViewController ()
 {
-    IBOutlet UIBubbleTableView *bubbleTable;
+    IBOutlet BTVBubbleTableView *bubbleTable;
     IBOutlet UIView *textInputView;
     IBOutlet UITextField *textField;
 
@@ -36,13 +36,13 @@
 {
     [super viewDidLoad];
     
-    NSBubbleData *heyBubble = [NSBubbleData dataWithText:@"Hey, halloween is soon" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
+    BTVBubbleData *heyBubble = [BTVBubbleData dataWithText:@"Hey, halloween is soon" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
     heyBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
 
-    NSBubbleData *photoBubble = [NSBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
+    BTVBubbleData *photoBubble = [BTVBubbleData dataWithImage:[UIImage imageNamed:@"halloween.jpg"] date:[NSDate dateWithTimeIntervalSinceNow:-290] type:BubbleTypeSomeoneElse];
     photoBubble.avatar = [UIImage imageNamed:@"avatar1.png"];
     
-    NSBubbleData *replyBubble = [NSBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
+    BTVBubbleData *replyBubble = [BTVBubbleData dataWithText:@"Wow.. Really cool picture out there. iPhone 5 has really nice camera, yeah?" date:[NSDate dateWithTimeIntervalSinceNow:-5] type:BubbleTypeMine];
     replyBubble.avatar = nil;
     
     bubbleData = [[NSMutableArray alloc] initWithObjects:heyBubble, photoBubble, replyBubble, nil];
@@ -82,12 +82,12 @@
 
 #pragma mark - UIBubbleTableViewDataSource implementation
 
-- (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView
+- (NSInteger)numberOfRowsForBubbleTable:(BTVBubbleTableView *)tableView
 {
     return [bubbleData count];
 }
 
-- (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row
+- (BTVBubbleData *)bubbleTableView:(BTVBubbleTableView *)tableView dataForRow:(NSInteger)row
 {
     return [bubbleData objectAtIndex:row];
 }
@@ -134,7 +134,7 @@
 {
     bubbleTable.typingBubble = NSBubbleTypingTypeNobody;
 
-    NSBubbleData *sayBubble = [NSBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
+    BTVBubbleData *sayBubble = [BTVBubbleData dataWithText:textField.text date:[NSDate dateWithTimeIntervalSinceNow:0] type:BubbleTypeMine];
     [bubbleData addObject:sayBubble];
     [bubbleTable reloadData];
     

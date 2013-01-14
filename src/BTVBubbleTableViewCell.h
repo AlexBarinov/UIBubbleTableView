@@ -9,11 +9,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NSBubbleData.h"
+#import "BTVBubbleData.h"
 
-@interface UIBubbleTableViewCell : UITableViewCell
+@interface BTVBubbleTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) NSBubbleData *data;
+@property (nonatomic, strong) BTVBubbleData *data;
 @property (nonatomic) BOOL showAvatar;
 
 @end
