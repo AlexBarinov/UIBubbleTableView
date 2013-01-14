@@ -209,7 +209,7 @@
         static NSString *cellId = @"tblBubbleTypingCell";
         BTVBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         
-        if (cell == nil) cell = [[BTVBubbleTypingTableViewCell alloc] init];
+        if (cell == nil) cell = [[[BTVBubbleTypingTableViewCell alloc] init] autorelease];
 
         cell.type = self.typingBubble;
         cell.showAvatar = self.showAvatars;
@@ -224,7 +224,7 @@
         BTVBubbleHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         BTVBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
-        if (cell == nil) cell = [[BTVBubbleHeaderTableViewCell alloc] init];
+        if (cell == nil) cell = [[[BTVBubbleHeaderTableViewCell alloc] init] autorelease];
 
         cell.date = data.date;
        
@@ -236,7 +236,7 @@
     BTVBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     BTVBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     
-    if (cell == nil) cell = [[BTVBubbleTableViewCell alloc] init];
+    if (cell == nil) cell = [[[BTVBubbleTableViewCell alloc] init] autorelease];
     
     cell.data = data;
     cell.showAvatar = self.showAvatars;

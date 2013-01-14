@@ -39,10 +39,10 @@
     }
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [BTVBubbleHeaderTableViewCell height])];
+    self.label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [BTVBubbleHeaderTableViewCell height])] autorelease];
     self.label.text = text;
     self.label.font = [UIFont boldSystemFontOfSize:12];
-    self.label.textAlignment = UITextAlignmentCenter;
+    self.label.textAlignment = NSTextAlignmentCenter;
     self.label.shadowOffset = CGSizeMake(0, 1);
     self.label.shadowColor = [UIColor whiteColor];
     self.label.textColor = [UIColor darkGrayColor];

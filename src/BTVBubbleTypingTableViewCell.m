@@ -29,7 +29,7 @@
 {
     if (!self.typingImageView)
     {
-        self.typingImageView = [[UIImageView alloc] init];
+        self.typingImageView = [[[UIImageView alloc] init] autorelease];
         [self addSubview:self.typingImageView];
     }
     
