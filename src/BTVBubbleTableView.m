@@ -158,6 +158,9 @@
 -(void)scrollToBottomAnimated:(BOOL)animated;
 {
     NSInteger sectionCount = [self numberOfSections];
+    if(sectionCount == 0)
+        return;
+    
     NSInteger rowCount = [self numberOfRowsInSection:sectionCount - 1];
     
     NSIndexPath* scrollTo = [NSIndexPath indexPathForRow:rowCount-1 inSection:sectionCount - 1];
