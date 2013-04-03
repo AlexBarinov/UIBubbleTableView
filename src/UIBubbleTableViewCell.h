@@ -14,6 +14,10 @@
 @interface UIBubbleTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) NSBubbleData *data;
+@property (nonatomic, strong) UIImageView *avatarImage;
+@property (nonatomic, strong) UIImageView *bubbleImage;
+@property (nonatomic, strong) UIView *customView;
+
 @property (nonatomic) BOOL showAvatar;
 
 @end
