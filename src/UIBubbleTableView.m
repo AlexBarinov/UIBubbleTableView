@@ -16,6 +16,7 @@
 @interface UIBubbleTableView ()
 
 @property (nonatomic, retain) NSMutableArray *bubbleSection;
+@property (nonatomic, retain) NSMutableArray *bubbleData;
 
 @end
 
@@ -44,6 +45,17 @@
     
     self.snapInterval = 120;
     self.typingBubble = NSBubbleTypingTypeNobody;
+    
+    // UITapGestureRecognizer to get the location of the tap.
+    
+    UITapGestureRecognizer *tapGestureRecognizer;
+#if !__has_feature(objc_arc)
+    tapGestureRecognizer = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableviewGestureRecognizerTapped:)] autorelease];
+#else
+    tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableviewGestureRecognizerTapped:)];
+#endif
+
+    [self addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (id)init
@@ -105,19 +117,19 @@
     if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
     {
 #if !__has_feature(objc_arc)
-        NSMutableArray *bubbleData = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
+        self.bubbleData = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
 #else
-        NSMutableArray *bubbleData = [[NSMutableArray alloc] initWithCapacity:count];
+        self.bubbleData = [[NSMutableArray alloc] initWithCapacity:count];
 #endif
         
         for (int i = 0; i < count; i++)
         {
             NSObject *object = [self.bubbleDataSource bubbleTableView:self dataForRow:i];
             assert([object isKindOfClass:[NSBubbleData class]]);
-            [bubbleData addObject:object];
+            [self.bubbleData addObject:object];
         }
         
-        [bubbleData sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
+        [self.bubbleData sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
          {
              NSBubbleData *bubbleData1 = (NSBubbleData *)obj1;
              NSBubbleData *bubbleData2 = (NSBubbleData *)obj2;
@@ -130,7 +142,7 @@
         
         for (int i = 0; i < count; i++)
         {
-            NSBubbleData *data = (NSBubbleData *)[bubbleData objectAtIndex:i];
+            NSBubbleData *data = (NSBubbleData *)[self.bubbleData objectAtIndex:i];
             
             if ([data.date timeIntervalSinceDate:last] > self.snapInterval)
             {
@@ -148,6 +160,31 @@
     }
     
     [super reloadData];
+}
+
+#pragma mark - UIBubbleTableView (Private)
+
+- (void)tableviewGestureRecognizerTapped:(UITapGestureRecognizer *)gestureRecognizer
+{
+    // Get location of tap
+    CGPoint tappedLocation = [gestureRecognizer locationInView:self];
+    
+    // Query tableview and get tapped cell
+    NSIndexPath *indexPath = [self indexPathForRowAtPoint:tappedLocation];
+    UIBubbleTableViewCell *cell = (UIBubbleTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+
+    if ([self.bubbleDelegate respondsToSelector:@selector(bubbleTableView:didSelectBubbleAtIndex:)])
+    {
+        if ([cell isKindOfClass:[UIBubbleTableViewCell class]] && indexPath)
+        {
+            CGPoint innerTappedLocation = [gestureRecognizer locationInView:cell];
+            if (CGRectContainsPoint(cell.bubbleImage.frame, innerTappedLocation))
+            {
+                NSUInteger index = [self.bubbleData indexOfObject:cell.data];
+                [self.bubbleDelegate bubbleTableView:self didSelectBubbleAtIndex:index];
+            }
+        }
+    }
 }
 
 #pragma mark - UITableViewDelegate implementation
