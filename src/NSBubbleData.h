@@ -16,10 +16,18 @@ typedef enum _NSBubbleType
     BubbleTypeSomeoneElse = 1
 } NSBubbleType;
 
+typedef enum _NSBubbleKindType
+{
+    BubbleOther = 0,
+    BubbleText = 1,
+    BubbleImage = 2
+} NSBubbleKindType;
+
 @interface NSBubbleData : NSObject
 
 @property (readonly, nonatomic, strong) NSDate *date;
 @property (readonly, nonatomic) NSBubbleType type;
+@property (readonly, nonatomic) NSBubbleKindType bubbleType;
 @property (readonly, nonatomic, strong) UIView *view;
 @property (readonly, nonatomic) UIEdgeInsets insets;
 @property (nonatomic, strong) UIImage *avatar;
