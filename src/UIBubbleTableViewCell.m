@@ -17,6 +17,7 @@
 @property (nonatomic, retain) UIView *customView;
 @property (nonatomic, retain) UIImageView *bubbleImage;
 @property (nonatomic, retain) UIImageView *avatarImage;
+@property (nonatomic, strong) UIImageView *statusImage;
 
 - (void) setupInternalData;
 
@@ -29,6 +30,7 @@
 @synthesize bubbleImage = _bubbleImage;
 @synthesize showAvatar = _showAvatar;
 @synthesize avatarImage = _avatarImage;
+@synthesize statusImage = _statusImage;
 
 - (void)setFrame:(CGRect)frame
 {
@@ -46,12 +48,6 @@
     [super dealloc];
 }
 #endif
-
-- (void)setDataInternal:(NSBubbleData *)value
-{
-	self.data = value;
-	[self setupInternalData];
-}
 
 - (void) setupInternalData
 {
@@ -110,13 +106,46 @@
     if (type == BubbleTypeSomeoneElse)
     {
         self.bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
-
-    }
-    else {
+    }else {
         self.bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
     }
 
     self.bubbleImage.frame = CGRectMake(x, y, width + self.data.insets.left + self.data.insets.right, height + self.data.insets.top + self.data.insets.bottom);
+    
+    // Message Status
+    if(!self.statusImage){
+#if !__has_feature(objc_arc)
+        self.statusImage    = [[[UIImageView alloc] init] autorelease];
+#else
+        self.statusImage    = [[UIImageView alloc] init];
+#endif
+        
+        [self addSubview: self.statusImage];
+    }
+        
+        CGFloat allWidth    = self.bubbleImage.frame.size.width + self.avatarImage.frame.size.width;
+        
+        CGFloat statusX     = (type == BubbleTypeSomeoneElse) ? allWidth + 3 : self.bubbleImage.frame.origin.x - 18;
+        CGFloat statusY     = self.frame.size.height - 23;
+        
+        self.statusImage.frame  = CGRectMake(statusX, statusY, 16, 16);
+    
+    self.statusImage.alpha  = (BubbleStatusNone)?0.0f:1.0f;
+    
+    switch (_data.status) {
+        case BubbleStatusNone:
+            self.statusImage.image  = nil;
+            break;
+        case BubbleStatusError:
+            self.statusImage.image  = [UIImage imageNamed: @"icnError.png"];
+            break;
+        case BubbleStatusSending:
+            self.statusImage.image  = [UIImage imageNamed: @"icnSending.png"];
+            break;
+        default:
+            break;
+    }
 }
+
 
 @end

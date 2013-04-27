@@ -20,6 +20,7 @@
 @synthesize view = _view;
 @synthesize insets = _insets;
 @synthesize avatar = _avatar;
+@synthesize status = _status;
 
 #pragma mark - Lifecycle
 
@@ -88,10 +89,10 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 - (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type
 {
     CGSize size = image.size;
-    if (size.width > 220)
+    if (size.width > 210)
     {
-        size.height /= (size.width / 220);
-        size.width = 220;
+        size.height /= (size.width / 210);
+        size.width = 210;
     }
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
