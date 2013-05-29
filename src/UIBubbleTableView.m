@@ -184,7 +184,10 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
+    if (data.type == BubbleTypeMyStatus || data.type == BubbleTypeSomeoneElsesStatus)
+        return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, 0);
+    else
+        return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
