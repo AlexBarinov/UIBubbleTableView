@@ -184,14 +184,29 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    
+    if (indexPath.row > 1) {
+        NSBubbleData *previousData = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 2];
+        
+        if ([previousData.screenName isEqualToString:data.screenName]) {
+            data.screenName = nil;
+        }
+    }
+    
+    CGFloat height;
     if (data.type == BubbleTypeMyStatus || data.type == BubbleTypeSomeoneElsesStatus)
-        return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, 0);
+        height = MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, 0);
     else
-        return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
+        height = MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 54 : 0);
+    
+    if (data.screenName)
+        height += 22.f;
+    
+    return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{   
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
@@ -224,6 +239,14 @@
     static NSString *cellId = @"tblBubbleCell";
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+    
+    if (indexPath.row > 1) {
+        NSBubbleData *previousData = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 2];
+        
+        if ([previousData.screenName isEqualToString:data.screenName]) {
+            data.screenName = nil;
+        }
+    }
     
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];
     

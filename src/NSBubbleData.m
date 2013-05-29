@@ -20,6 +20,7 @@
 @synthesize view = _view;
 @synthesize insets = _insets;
 @synthesize avatar = _avatar;
+@synthesize screenName = _screenName;
 
 #pragma mark - Lifecycle
 

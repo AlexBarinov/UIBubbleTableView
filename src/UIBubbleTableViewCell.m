@@ -17,6 +17,7 @@
 @property (nonatomic, retain) UIView *customView;
 @property (nonatomic, retain) UIImageView *bubbleImage;
 @property (nonatomic, retain) UIImageView *avatarImage;
+@property (nonatomic, retain) UILabel* screenNameLabel;
 
 - (void) setupInternalData;
 
@@ -73,7 +74,7 @@
     CGFloat height = self.data.view.frame.size.height;
 
     CGFloat x = (type == BubbleTypeSomeoneElse | type == BubbleTypeSomeoneElsesStatus) ? 0 : self.frame.size.width - width - self.data.insets.left - self.data.insets.right;
-    CGFloat y = 0;
+    CGFloat y = (_data.screenName ? 20.f : 0.f);
     
     // Adjusting the x coordinate for avatar
     if (self.showAvatar && (type == BubbleTypeMine || type == BubbleTypeSomeoneElse))
@@ -100,6 +101,20 @@
         
         if (type == BubbleTypeSomeoneElse | type == BubbleTypeSomeoneElsesStatus) x += 54;
         if (type == BubbleTypeMine) x -= 54;
+    }
+    
+    if (_data.screenName && type == BubbleTypeSomeoneElse) {
+        [self.screenNameLabel removeFromSuperview];
+        
+        self.screenNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 2, self.bounds.size.width, 20.f)];
+        self.screenNameLabel.text = _data.screenName;
+        self.screenNameLabel.backgroundColor = [UIColor clearColor];
+        self.screenNameLabel.font = [UIFont boldSystemFontOfSize:18.f];
+        self.screenNameLabel.textColor = [UIColor darkGrayColor];
+        self.screenNameLabel.shadowColor = [UIColor whiteColor];
+        self.screenNameLabel.shadowOffset = CGSizeMake(0, 1.f);
+        
+        [self addSubview:self.screenNameLabel];
     }
 
     [self.customView removeFromSuperview];
