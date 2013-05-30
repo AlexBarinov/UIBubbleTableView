@@ -75,11 +75,12 @@ const UIEdgeInsets textInsetsStatus = {2, 5, 2, 5};
     [label autorelease];
 #endif
     
-    UIEdgeInsets insets = (type == BubbleTypeMine || type == BubbleTypeMyStatus ? textInsetsMine : textInsetsSomeone);
+    UIEdgeInsets insets;
     if (type == BubbleTypeMine || type == BubbleTypeSomeoneElse)
-        insets = (type == BubbleTypeMine ? imageInsetsMine : imageInsetsSomeone);
+        insets = (type == BubbleTypeMine || type == BubbleTypeMyStatus ? textInsetsMine : textInsetsSomeone);
     else
         insets = textInsetsStatus;
+    
     return [self initWithView:label date:date type:type insets:insets];
 }
 
