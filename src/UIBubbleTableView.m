@@ -148,6 +148,13 @@
     }
     
     [super reloadData];
+    
+    //Autoscroll to bottom of chat when reloadData called
+    int sectionCount = [self numberOfSections];
+    int rowsInLastSection = [self numberOfRowsInSection:sectionCount-1];
+    
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:rowsInLastSection-1 inSection:sectionCount-1];
+    [self scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 #pragma mark - UITableViewDelegate implementation
