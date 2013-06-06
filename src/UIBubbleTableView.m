@@ -26,6 +26,7 @@
 @synthesize bubbleSection = _bubbleSection;
 @synthesize typingBubble = _typingBubble;
 @synthesize showAvatars = _showAvatars;
+@synthesize showOnlySomeoneElseAvatar = _showOnlySomeoneElseAvatar;
 
 #pragma mark - Initializators
 
@@ -226,6 +227,7 @@
     
     cell.data = data;
     cell.showAvatar = self.showAvatars;
+    cell.showOnlySomeoneElseAvatar = self.showOnlySomeoneElseAvatar;
     
     return cell;
 }
