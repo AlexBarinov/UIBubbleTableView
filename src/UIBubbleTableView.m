@@ -148,6 +148,24 @@
     }
     
     [super reloadData];
+    
+	[self scrollToBottomWithAnimation:YES];
+}
+
+- (BOOL) scrollToBottomWithAnimation:(BOOL)animatedBool {
+	//Autoscroll to bottom of chat when reloadData called. Returns whether scroll actually occurred.
+
+    int sectionCount = [self numberOfSections];
+
+    if(sectionCount<=0) return NO;
+
+    int rowsInLastSection = [self numberOfRowsInSection:sectionCount-1];
+    
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:rowsInLastSection-1 inSection:sectionCount-1];
+    [self scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:animatedBool];
+
+    return YES;	
+	
 }
 
 #pragma mark - UITableViewDelegate implementation
