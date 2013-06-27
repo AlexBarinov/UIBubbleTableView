@@ -13,5 +13,6 @@
 + (CGFloat)height;
 
 @property (nonatomic, strong) NSDate *date;
+@property (strong, nonatomic) NSString *info;
 
 @end

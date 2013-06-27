@@ -62,13 +62,16 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     label.text = (text ? text : @"");
     label.font = font;
     label.backgroundColor = [UIColor clearColor];
-    
 #if !__has_feature(objc_arc)
     [label autorelease];
 #endif
     
     UIEdgeInsets insets = (type == BubbleTypeMine ? textInsetsMine : textInsetsSomeone);
-    return [self initWithView:label date:date type:type insets:insets];
+    if((self = [self initWithView:label date:date type:type insets:insets]))
+    {
+        self.text = text;        
+    }
+    return self;
 }
 
 #pragma mark - Image bubble

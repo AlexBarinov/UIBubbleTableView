@@ -32,24 +32,39 @@
     NSString *text = [dateFormatter stringFromDate:value];
     [dateFormatter release];
     
-    if (self.label)
+    if(!self.label)
     {
-        self.label.text = text;
-        return;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [BTVBubbleHeaderTableViewCell height])] autorelease];
+        self.label.font = [UIFont boldSystemFontOfSize:12];
+        self.label.textAlignment = NSTextAlignmentCenter;
+        self.label.shadowOffset = CGSizeMake(0, 1);
+        self.label.shadowColor = [UIColor whiteColor];
+        self.label.textColor = [UIColor darkGrayColor];
+        self.label.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.label];        
     }
     
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [BTVBubbleHeaderTableViewCell height])] autorelease];
     self.label.text = text;
-    self.label.font = [UIFont boldSystemFontOfSize:12];
-    self.label.textAlignment = NSTextAlignmentCenter;
-    self.label.shadowOffset = CGSizeMake(0, 1);
-    self.label.shadowColor = [UIColor whiteColor];
-    self.label.textColor = [UIColor darkGrayColor];
-    self.label.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.label];
 }
 
+-(void)setInfo:(NSString *)info
+{
+    if(!self.label)
+    {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, [BTVBubbleHeaderTableViewCell height])] autorelease];
+        self.label.font = [UIFont boldSystemFontOfSize:12];
+        self.label.textAlignment = NSTextAlignmentCenter;
+        self.label.shadowOffset = CGSizeMake(0, 1);
+        self.label.shadowColor = [UIColor whiteColor];
+        self.label.textColor = [UIColor darkGrayColor];
+        self.label.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.label];
+    }
+    self.label.text = info;
+    _info = info;
+}
 
 
 @end

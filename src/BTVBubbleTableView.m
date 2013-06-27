@@ -235,10 +235,22 @@
     }
     
     // Standard bubble    
-    static NSString *cellId = @"tblBubbleCell";
-    BTVBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     BTVBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     
+    if(data.type == BubbleTypeInfo)
+    {
+        static NSString *cellId = @"tblBubbleHeaderCell";
+        BTVBubbleHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        
+        if (cell == nil) cell = [[[BTVBubbleHeaderTableViewCell alloc] init] autorelease];
+        
+        cell.info = data.text;
+        
+        return cell;        
+    }
+    
+    static NSString *cellId = @"tblBubbleCell";
+    BTVBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) cell = [[[BTVBubbleTableViewCell alloc] init] autorelease];
     
     cell.data = data;
