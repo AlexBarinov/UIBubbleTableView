@@ -26,6 +26,7 @@ typedef enum _BTVBubbleTypingType
 @property (nonatomic) NSTimeInterval snapInterval;
 @property (nonatomic) BTVBubbleTypingType typingBubble;
 @property (nonatomic) BOOL showAvatars;
+@property (nonatomic) BOOL showUsernameLabel;
 @property (nonatomic) BOOL scrollOnActivity;
 -(void)scrollToBottomAnimated:(BOOL)animated;
 

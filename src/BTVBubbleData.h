@@ -25,6 +25,7 @@ typedef enum _BTVBubbleType
 @property (readonly, nonatomic) UIEdgeInsets insets;
 @property (nonatomic, strong) UIImage *avatar;
 @property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *userLabel;
 
 - (id)initWithText:(NSString *)text date:(NSDate *)date type:(BTVBubbleType)type;
 + (id)dataWithText:(NSString *)text date:(NSDate *)date type:(BTVBubbleType)type;

@@ -191,7 +191,12 @@
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        return MAX([BTVBubbleTypingTableViewCell height], self.showAvatars ? 52 : 0);
+        if(self.showUsernameLabel)
+            return MAX([BTVBubbleTypingTableViewCell height], 78);
+        if(self.showAvatars)
+            return MAX([BTVBubbleTypingTableViewCell height], 52);
+        
+        return [BTVBubbleTypingTableViewCell height];
     }
     
     // Header
@@ -201,7 +206,13 @@
     }
     
     BTVBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
+    
+    if(self.showUsernameLabel)
+        return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, 78);
+    if(self.showAvatars)
+        return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, 52);
+    
+    return (data.insets.top + data.view.frame.size.height + data.insets.bottom);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -17,6 +17,7 @@
 @property (nonatomic, retain) UIView *customView;
 @property (nonatomic, retain) UIImageView *bubbleImage;
 @property (nonatomic, retain) UIImageView *avatarImage;
+@property (strong, nonatomic) UILabel *nameLabel;
 
 - (void) setupInternalData;
 
@@ -101,10 +102,11 @@
         if (type == BubbleTypeSomeoneElse) x += 54;
         if (type == BubbleTypeMine) x -= 54;
     }
-
+    
     [self.customView removeFromSuperview];
     self.customView = self.data.view;
     self.customView.frame = CGRectMake(x + self.data.insets.left, y + self.data.insets.top, width, height);
+
     [self.contentView addSubview:self.customView];
 
     if (type == BubbleTypeSomeoneElse)
@@ -117,6 +119,26 @@
     }
 
     self.bubbleImage.frame = CGRectMake(x, y, width + self.data.insets.left + self.data.insets.right, height + self.data.insets.top + self.data.insets.bottom);
+
+    if(self.data.userLabel)
+    {
+        // adjust everything else to allow room for the label...
+        self.customView.center = CGPointMake(self.customView.center.x, self.customView.center.y - (self.avatarImage.frame.size.height/2));
+        self.bubbleImage.center = CGPointMake(self.bubbleImage.center.x, self.bubbleImage.center.y - (self.avatarImage.frame.size.height/2));
+        self.avatarImage.center = CGPointMake(self.avatarImage.center.x, self.avatarImage.center.y - (self.avatarImage.frame.size.height/2));
+
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        self.nameLabel.text = self.data.userLabel;
+        CGRect nameLabelFrame = self.avatarImage.frame;
+        nameLabelFrame.origin.y += self.avatarImage.frame.size.height;
+        nameLabelFrame.size.height = self.avatarImage.frame.size.height/2;
+        self.nameLabel.frame = nameLabelFrame;
+        self.nameLabel.textColor = [UIColor grayColor];
+        self.nameLabel.textAlignment = NSTextAlignmentCenter;
+        self.nameLabel.font = [UIFont fontWithName:@"Avenir" size:14];
+        [self addSubview:self.nameLabel];
+
+    }
 }
 
 @end
