@@ -13,7 +13,9 @@
 typedef enum _NSBubbleType
 {
     BubbleTypeMine = 0,
-    BubbleTypeSomeoneElse = 1
+    BubbleTypeSomeoneElse = 1,
+    BubbleTypeMyStatus = 2,
+    BubbleTypeSomeoneElsesStatus = 3
 } NSBubbleType;
 
 @interface NSBubbleData : NSObject
@@ -23,6 +25,7 @@ typedef enum _NSBubbleType
 @property (readonly, nonatomic, strong) UIView *view;
 @property (readonly, nonatomic) UIEdgeInsets insets;
 @property (nonatomic, strong) UIImage *avatar;
+@property (nonatomic, strong) NSString *screenName;
 
 - (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type;
 + (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type;
