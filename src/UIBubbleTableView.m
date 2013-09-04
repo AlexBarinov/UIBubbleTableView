@@ -230,4 +230,17 @@
     return cell;
 }
 
+#pragma mark - Public interface
+
+- (void) scrollBubbleViewToBottomAnimated:(BOOL)animated
+{
+    NSInteger lastSectionIdx = [self numberOfSections] - 1;
+    
+    if (lastSectionIdx >= 0)
+    {
+    	[self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([self numberOfRowsInSection:lastSectionIdx] - 1) inSection:lastSectionIdx] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+    }
+}
+
+
 @end
