@@ -227,9 +227,25 @@
     cell.data = data;
     cell.showAvatar = self.showAvatars;
     
+    UIButton *button = (UIButton*)[data.view viewWithTag:1];
+    [button addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
-
+- (void) checkButtonTapped:(id)sender event:(id)event {
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self];
+    NSIndexPath *indexPath = [self indexPathForRowAtPoint: currentTouchPosition];
+    //    NSLog(@"indexPath=%@",indexPath);
+    if (indexPath.row != 0)
+    {
+        NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
+        [self.bubbleDataSource didSelectNSBubbleDataCell:data];
+    }
+    
+    
+}
 #pragma mark - Public interface
 
 - (void) scrollBubbleViewToBottomAnimated:(BOOL)animated
