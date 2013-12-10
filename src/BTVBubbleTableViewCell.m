@@ -132,9 +132,10 @@
         CGRect nameLabelFrame = self.avatarImage.frame;
         nameLabelFrame.origin.y += self.avatarImage.frame.size.height;
         nameLabelFrame.size.height = self.avatarImage.frame.size.height/2;
+        nameLabelFrame.size.width = self.bounds.size.width;
         self.nameLabel.frame = nameLabelFrame;
         self.nameLabel.textColor = [UIColor grayColor];
-        self.nameLabel.textAlignment = NSTextAlignmentCenter;
+        self.nameLabel.textAlignment = NSTextAlignmentLeft;
         self.nameLabel.font = [UIFont fontWithName:@"Avenir" size:14];
         [self addSubview:self.nameLabel];
 
