@@ -82,7 +82,7 @@
 
 #pragma mark - UIBubbleTableViewDataSource implementation
 
-- (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView
+- (NSUInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView
 {
     return [bubbleData count];
 }
