@@ -49,6 +49,7 @@
     self.label.shadowColor = [UIColor whiteColor];
     self.label.textColor = [UIColor darkGrayColor];
     self.label.backgroundColor = [UIColor clearColor];
+    self.label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self addSubview:self.label];
 }
 

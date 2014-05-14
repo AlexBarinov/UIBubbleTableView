@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIBubbleTableViewCell.h"
 #import "NSBubbleData.h"
+#import "ImageCache.h"
 
 @interface UIBubbleTableViewCell ()
 
@@ -75,14 +76,20 @@
     CGFloat x = (type == BubbleTypeSomeoneElse) ? 0 : self.frame.size.width - width - self.data.insets.left - self.data.insets.right;
     CGFloat y = 0;
     
+    ImageCache *cache = [ImageCache sharedInstance];
+    UIImage *image;
+
     // Adjusting the x coordinate for avatar
     if (self.showAvatar)
     {
         [self.avatarImage removeFromSuperview];
+
+        image = [cache imageNamed:@"missingAvatar.png"];
+        
 #if !__has_feature(objc_arc)
-        self.avatarImage = [[[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:@"missingAvatar.png"])] autorelease];
+        self.avatarImage = [[[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : image)] autorelease];
 #else
-        self.avatarImage = [[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:@"missingAvatar.png"])];
+        self.avatarImage = [[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : image)];
 #endif
         self.avatarImage.layer.cornerRadius = 9.0;
         self.avatarImage.layer.masksToBounds = YES;
@@ -109,12 +116,12 @@
 
     if (type == BubbleTypeSomeoneElse)
     {
-        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone.png"] stretchableImageWithLeftCapWidth:21 topCapHeight:14];
-
+        image = [cache imageNamed:@"bubbleSomeone.png" stretchableWithLeftCapWidth:21 topCapHeight:14];
     }
     else {
-        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleMine.png"] stretchableImageWithLeftCapWidth:15 topCapHeight:14];
+        image = [cache imageNamed:@"bubbleMine.png" stretchableWithLeftCapWidth:21 topCapHeight:14];
     }
+    self.bubbleImage.image = image;
 
     self.bubbleImage.frame = CGRectMake(x, y, width + self.data.insets.left + self.data.insets.right, height + self.data.insets.top + self.data.insets.bottom);
 }
