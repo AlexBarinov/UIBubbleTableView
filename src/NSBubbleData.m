@@ -55,8 +55,13 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 {
     UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
     CGSize size = [(text ? text : @"") boundingRectWithSize: CGSizeMake(220, 9999) options: NSStringDrawingUsesLineFragmentOrigin attributes: @{ NSFontAttributeName:font }context: nil].size;
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    /* 
+     documention mentions
+     "In iOS 7 and later, this method returns fractional sizes (in the size component of the returned CGRect); to use a returned size to size views, you must use raise its value to the nearest higher integer using the ceil function."
+     */
+    CGFloat height = ceilf(size.height);
+    CGFloat width  = ceilf(size.width);
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.text = (text ? text : @"");
