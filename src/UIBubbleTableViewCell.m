@@ -117,6 +117,91 @@
     }
 
     self.bubbleImage.frame = CGRectMake(x, y, width + self.data.insets.left + self.data.insets.right, height + self.data.insets.top + self.data.insets.bottom);
+
+    UILongPressGestureRecognizer *recognizer =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [recognizer setMinimumPressDuration:0.5];
+    [self addGestureRecognizer:recognizer];
+    [recognizer release];
+}
+
+- (BOOL) canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (BOOL) becomeFirstResponder
+{
+    return [super becomeFirstResponder];
+}
+
+- (BOOL) canPerformAction:(SEL)action withSender:(id)sender
+{
+    if (action == @selector(copy:))
+        return YES;
+    
+    return [super canPerformAction:action withSender:sender];
+}
+
+- (void)copy:(id)sender {
+    if ([_data.view isKindOfClass:[UILabel class]]) {
+        UILabel * cellLabel = (UILabel*)_data.view;
+        [[UIPasteboard generalPasteboard] setString:[cellLabel text]];
+    } else if ([_data.view isKindOfClass:[UIImageView class]]) {
+        UIImageView * cellImageView = (UIImageView*)_data.view;
+        [[UIPasteboard generalPasteboard] setImage:cellImageView.image];
+    } else if ([_data.view isKindOfClass:[UIImage class]]) {
+        UIImage * cellImage = (UIImage*)_data.view;
+        [[UIPasteboard generalPasteboard] setImage:cellImage];
+    } else {
+        [[UIPasteboard generalPasteboard] setString:@"Unknown cell type can't be copied."];
+    }
+    
+    [self resignFirstResponder];
+}
+
+- (void) handleLongPress:(UILongPressGestureRecognizer *)longPressRecognizer
+{
+    if (longPressRecognizer.state != UIGestureRecognizerStateBegan)
+        return;
+    
+    if ([self becomeFirstResponder] == NO)
+        return;
+    
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    [menu setTargetRect:self.bubbleImage.frame inView:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(menuWillShow:)
+                                                 name:UIMenuControllerWillShowMenuNotification
+                                               object:nil];
+    [menu setMenuVisible:YES animated:YES];
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    if ([self isFirstResponder] == NO)
+        return;
+    
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    [menu setMenuVisible:NO animated:YES];
+    [menu update];
+    [self resignFirstResponder];
+}
+
+- (void) menuWillHide:(NSNotification *)notification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIMenuControllerWillHideMenuNotification object:nil];
+}
+
+- (void) menuWillShow:(NSNotification *)notification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIMenuControllerWillShowMenuNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(menuWillHide:)
+                                                 name:UIMenuControllerWillHideMenuNotification
+                                               object:nil];
 }
 
 @end
