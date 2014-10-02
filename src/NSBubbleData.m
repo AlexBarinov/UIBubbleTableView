@@ -20,6 +20,7 @@
 @synthesize view = _view;
 @synthesize insets = _insets;
 @synthesize avatar = _avatar;
+@synthesize statusView = _statusView;
 
 #pragma mark - Lifecycle
 
@@ -108,6 +109,67 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     return [self initWithView:imageView date:date type:type insets:insets];       
 }
 
+- (id)initWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type msgStatus:(NSBubbleMsgStatus)msgStatus {
+    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    CGSize size = [(text ? text : @"") sizeWithFont:font constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:UILineBreakModeWordWrap];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    label.numberOfLines = 0;
+    label.lineBreakMode = UILineBreakModeWordWrap;
+    label.text = (text ? text : @"");
+    label.font = font;
+    label.backgroundColor = [UIColor clearColor];
+    
+#if !__has_feature(objc_arc)
+    [label autorelease];
+#endif
+    
+    UIEdgeInsets insets = (type == BubbleTypeMine ? textInsetsMine : textInsetsSomeone);
+    
+    UIView *statusView;
+    if (type == BubbleTypeMine) {
+        statusView = [[UIView alloc] initWithFrame:CGRectZero];
+        statusView.backgroundColor = [UIColor clearColor];
+        
+        switch (msgStatus) {
+            case 0: {
+                UIActivityIndicatorView *msgSendingStatus = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+                msgSendingStatus.frame = CGRectMake(1.0f, 1.0f, 18.0f, 18.0f);
+                [msgSendingStatus startAnimating];
+                [statusView addSubview:msgSendingStatus];
+            }
+                break;
+                
+            case 1: {
+                UIImageView *succedAlert = [[UIImageView alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 18.0f, 18.0f)];
+                succedAlert.image = [UIImage imageNamed:@"CheckMark.png"];
+                [statusView addSubview:succedAlert];
+            }
+                break;
+                
+            case 2: {
+                UIImageView *errorAlert = [[UIImageView alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 18.0f, 18.0f)];
+                errorAlert.image = [UIImage imageNamed:@"symbol-error.png"];
+                [statusView addSubview:errorAlert];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    return [self initWithView:label date:date type:type insets:insets status:statusView];
+}
+
++ (id)dataWithText:(NSString *)text date:(NSDate *)date type:(NSBubbleType)type msgStatus:(NSBubbleMsgStatus)msgStatus {
+#if !__has_feature(objc_arc)
+    return [[[NSBubbleData alloc] initWithText:text date:date type:type msgStatus:msgStatus] autorelease];
+#else
+    return [[NSBubbleData alloc] initWithText:text date:date type:type msgStatus:msgStatusmsgStatus:msgStatus];
+#endif
+}
+
 #pragma mark - Custom view bubble
 
 + (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets
@@ -130,6 +192,35 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 #else
         _view = view;
         _date = date;
+#endif
+        _type = type;
+        _insets = insets;
+    }
+    return self;
+}
+
++ (id)dataWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets status:(UIView *)statusView
+{
+#if !__has_feature(objc_arc)
+    return [[[NSBubbleData alloc] initWithView:view date:date type:type insets:insets status:statusView] autorelease];
+#else
+    return [[NSBubbleData alloc] initWithView:view date:date type:type insets:insets status:statusView];
+#endif
+}
+
+- (id)initWithView:(UIView *)view date:(NSDate *)date type:(NSBubbleType)type insets:(UIEdgeInsets)insets status:(UIView *)statusView
+{
+    self = [super init];
+    if (self)
+    {
+#if !__has_feature(objc_arc)
+        _view = [view retain];
+        _date = [date retain];
+        _statusView = [statusView retain];
+#else
+        _view = view;
+        _date = date;
+        _statusView = statusView;
 #endif
         _type = type;
         _insets = insets;
