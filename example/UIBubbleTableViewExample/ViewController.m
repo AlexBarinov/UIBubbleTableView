@@ -129,7 +129,9 @@
 }
 
 #pragma mark - Actions
-
+- (void)didSelectNSBubbleDataCell:(NSBubbleData *)dataCell{
+    NSLog(@"Image Option");
+}
 - (IBAction)sayPressed:(id)sender
 {
     bubbleTable.typingBubble = NSBubbleTypingTypeNobody;

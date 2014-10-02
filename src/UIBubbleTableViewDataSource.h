@@ -20,5 +20,5 @@
 
 - (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView;
 - (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row;
-
+- (void)didSelectNSBubbleDataCell:(NSBubbleData *)dataCell;
 @end

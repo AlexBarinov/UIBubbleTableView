@@ -94,18 +94,18 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
         size.width = 220;
     }
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    imageView.image = image;
-    imageView.layer.cornerRadius = 5.0;
-    imageView.layer.masksToBounds = YES;
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, size.width, size.height);
+    button.tag = 1;
+    [button setBackgroundImage:image forState:UIControlStateNormal];
 
     
 #if !__has_feature(objc_arc)
-    [imageView autorelease];
+    [button autorelease];
 #endif
     
     UIEdgeInsets insets = (type == BubbleTypeMine ? imageInsetsMine : imageInsetsSomeone);
-    return [self initWithView:imageView date:date type:type insets:insets];       
+    return [self initWithView:button date:date type:type insets:insets];       
 }
 
 #pragma mark - Custom view bubble
