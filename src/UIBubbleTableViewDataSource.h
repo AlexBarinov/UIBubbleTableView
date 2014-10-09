@@ -18,7 +18,7 @@
 
 @required
 
-- (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView;
+- (NSUInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView;
 - (NSBubbleData *)bubbleTableView:(UIBubbleTableView *)tableView dataForRow:(NSInteger)row;
 
 @end

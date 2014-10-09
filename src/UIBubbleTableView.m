@@ -13,6 +13,10 @@
 #import "UIBubbleHeaderTableViewCell.h"
 #import "UIBubbleTypingTableViewCell.h"
 
+static NSString * const kBubbleTypingCell = @"tblBubbleTypingCell";
+static NSString * const kBubbleHeaderCell = @"tblBubbleHeaderCell";
+static NSString * const kBubbleCell = @"tblBubbleCell";
+
 @interface UIBubbleTableView ()
 
 @property (nonatomic, retain) NSMutableArray *bubbleSection;
@@ -44,6 +48,12 @@
     
     self.snapInterval = 120;
     self.typingBubble = NSBubbleTypingTypeNobody;
+    
+    // cell class must be registered otherwise dequeueReusableCellWithIdentifier: returns nill!
+    [self registerClass:[UIBubbleTableViewCell class] forCellReuseIdentifier:kBubbleCell];
+    [self registerClass:[UIBubbleHeaderTableViewCell class] forCellReuseIdentifier:kBubbleHeaderCell];
+    [self registerClass:[UIBubbleTypingTableViewCell class] forCellReuseIdentifier:kBubbleTypingCell];
+
 }
 
 - (id)init
@@ -95,7 +105,7 @@
 	self.bubbleSection = nil;
     
     // Loading new data
-    int count = 0;
+    NSUInteger count = 0;
 #if !__has_feature(objc_arc)
     self.bubbleSection = [[[NSMutableArray alloc] init] autorelease];
 #else
@@ -156,7 +166,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    int result = [self.bubbleSection count];
+    NSInteger result = [self.bubbleSection count];
     if (self.typingBubble != NSBubbleTypingTypeNobody) result++;
     return result;
 }
@@ -169,7 +179,7 @@
     return [[self.bubbleSection objectAtIndex:section] count] + 1;
 }
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
@@ -192,8 +202,7 @@
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        static NSString *cellId = @"tblBubbleTypingCell";
-        UIBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        UIBubbleTypingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBubbleTypingCell];
         
         if (cell == nil) cell = [[UIBubbleTypingTableViewCell alloc] init];
 
@@ -206,8 +215,7 @@
     // Header with date and time
     if (indexPath.row == 0)
     {
-        static NSString *cellId = @"tblBubbleHeaderCell";
-        UIBubbleHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        UIBubbleHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBubbleHeaderCell];
         NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
         if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
@@ -218,8 +226,7 @@
     }
     
     // Standard bubble    
-    static NSString *cellId = @"tblBubbleCell";
-    UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBubbleCell];
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
     
     if (cell == nil) cell = [[UIBubbleTableViewCell alloc] init];

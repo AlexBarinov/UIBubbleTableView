@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20489A9519235BF9002CFE85 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20489A9419235BF9002CFE85 /* Default-568h@2x.png */; };
+		20489A9819236065002CFE85 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 20489A9719236065002CFE85 /* ImageCache.m */; };
 		76687AFD1622039C00707588 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */; };
 		76687AFF162203AF00707588 /* halloween.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 76687AFE162203AF00707588 /* halloween.jpg */; };
 		76D097CC1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D097CB1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m */; };
@@ -37,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20489A9419235BF9002CFE85 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		20489A9619236065002CFE85 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCache.h; path = ../../src/ImageCache.h; sourceTree = "<group>"; };
+		20489A9719236065002CFE85 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCache.m; path = ../../src/ImageCache.m; sourceTree = "<group>"; };
 		76687AFB1622039C00707588 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIBubbleTypingTableViewCell.h; path = ../../src/UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
 		76687AFC1622039C00707588 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIBubbleTypingTableViewCell.m; path = ../../src/UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		76687AFE162203AF00707588 /* halloween.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = halloween.jpg; sourceTree = SOURCE_ROOT; };
@@ -94,6 +99,7 @@
 		76ED205315BF096C00E186D3 = {
 			isa = PBXGroup;
 			children = (
+				20489A9419235BF9002CFE85 /* Default-568h@2x.png */,
 				76ED206815BF096C00E186D3 /* UIBubbleTableViewExample */,
 				76ED206115BF096C00E186D3 /* Frameworks */,
 				76ED205F15BF096C00E186D3 /* Products */,
@@ -151,6 +157,8 @@
 		76ED208315BF09AD00E186D3 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				20489A9619236065002CFE85 /* ImageCache.h */,
+				20489A9719236065002CFE85 /* ImageCache.m */,
 				76ED208915BF0BB100E186D3 /* NSBubbleData.h */,
 				76ED208A15BF0BB100E186D3 /* NSBubbleData.m */,
 				76ED208515BF09E300E186D3 /* UIBubbleTableView.h */,
@@ -210,7 +218,7 @@
 		76ED205515BF096C00E186D3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 76ED205815BF096C00E186D3 /* Build configuration list for PBXProject "UIBubbleTableViewExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -242,6 +250,7 @@
 				C83B107A15DE43180067DADE /* bubbleMine@2x.png in Resources */,
 				C83B107B15DE43180067DADE /* bubbleSomeone.png in Resources */,
 				C83B107C15DE43180067DADE /* bubbleSomeone@2x.png in Resources */,
+				20489A9519235BF9002CFE85 /* Default-568h@2x.png in Resources */,
 				C83B107D15DE43180067DADE /* typingMine.png in Resources */,
 				C83B107E15DE43180067DADE /* typingMine@2x.png in Resources */,
 				C83B107F15DE43180067DADE /* typingSomeone.png in Resources */,
@@ -267,6 +276,7 @@
 				76ED208B15BF0BB100E186D3 /* NSBubbleData.m in Sources */,
 				76ED209415BF29EE00E186D3 /* UIBubbleTableViewCell.m in Sources */,
 				76D097CC1621F0E000C17816 /* UIBubbleHeaderTableViewCell.m in Sources */,
+				20489A9819236065002CFE85 /* ImageCache.m in Sources */,
 				76687AFD1622039C00707588 /* UIBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,7 +307,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -309,10 +324,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -321,15 +340,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
