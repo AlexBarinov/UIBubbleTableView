@@ -28,6 +28,7 @@
 @synthesize customView = _customView;
 @synthesize bubbleImage = _bubbleImage;
 @synthesize showAvatar = _showAvatar;
+@synthesize showOnlySomeoneElseAvatar = _showOnlySomeoneElseAvatar;
 @synthesize avatarImage = _avatarImage;
 
 - (void)setFrame:(CGRect)frame
@@ -76,7 +77,7 @@
     CGFloat y = 0;
     
     // Adjusting the x coordinate for avatar
-    if (self.showAvatar)
+    if (self.showAvatar || (self.showOnlySomeoneElseAvatar && type == BubbleTypeSomeoneElse))
     {
         [self.avatarImage removeFromSuperview];
 #if !__has_feature(objc_arc)
