@@ -21,7 +21,7 @@
 @synthesize insets = _insets;
 @synthesize avatar = _avatar;
 
-#pragma mark - Lifecycle
+#pragma mark - NSObject
 
 #if !__has_feature(objc_arc)
 - (void)dealloc
@@ -62,6 +62,7 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     label.text = (text ? text : @"");
     label.font = font;
     label.backgroundColor = [UIColor clearColor];
+    _bubbleType = BubbleText;
     
 #if !__has_feature(objc_arc)
     [label autorelease];
@@ -98,6 +99,7 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     imageView.image = image;
     imageView.layer.cornerRadius = 5.0;
     imageView.layer.masksToBounds = YES;
+    _bubbleType = BubbleImage;
 
     
 #if !__has_feature(objc_arc)

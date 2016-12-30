@@ -16,7 +16,6 @@
 
 #import "ViewController.h"
 #import "UIBubbleTableView.h"
-#import "UIBubbleTableViewDataSource.h"
 #import "NSBubbleData.h"
 
 @interface ViewController ()
@@ -78,6 +77,30 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark - UIBubbleTableViewDelegate implementation
+
+-(void)bubbleTableView:(UIBubbleTableView *)tableView didSelectBubbleAtIndex:(NSUInteger)index
+{
+    NSBubbleData *selectedBubble = [bubbleData objectAtIndex:index];
+    NSString *alertMsg = nil;
+    
+    switch (selectedBubble.bubbleType)
+    {
+        case BubbleText:
+            alertMsg = @"Bubble Text";
+            break;
+        case BubbleImage:
+            alertMsg = @"Bubble Image";
+            break;
+        case BubbleOther:
+            alertMsg = @"Bubble Other";
+            break;
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:alertMsg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 #pragma mark - UIBubbleTableViewDataSource implementation
